@@ -14,6 +14,12 @@ XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
 XILINX_TOOLS_PATH="/tools/Xilinx"
 XRT_PATH="/opt/xilinx/xrt"
 
+#get username
+username=$(getent passwd ${SUDO_UID})
+username=${username%%:*}
+
+echo $username
+
 #- ACAP_SERVERS_LIST
 #- CPU_SERVERS_LIST
 #- FPGA_SERVERS_LIST
