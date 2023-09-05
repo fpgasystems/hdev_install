@@ -9,18 +9,18 @@
 </p>
 
 <h1 align="center">
-  Systems Group RunTime
+  Systems Group RunTime Installation
 </h1> 
 
 <!-- **sgrt_install** helps you to install SGRT is the Systems Group RunTime developed for ETHZ-[HACC](https://github.com/fpgasystems/hacc). While [`sgutil`](./cli/manual.md#cli) allows you to create your projects and setup the infrastructure, the [API](./api/manual.md) helps you to develop your applications faster. --> 
 
-# Installation
+<!-- # Installation
 
 * [1. Download the installer](#1-download-the-installer)
 * [CLI](./cli/manual.md#cli)
 * [Examples](./examples.md#examples)
 * [Installation](./installation.md#installation)
-* [License](#license)
+* [License](#license) -->
 
 ## 1. Download the installer
 Clone this repository:
