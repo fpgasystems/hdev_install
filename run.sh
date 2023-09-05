@@ -72,7 +72,7 @@ mkdir -p "$sgrt_install_path" || exit 1
 
 #checkout sgrt
 cd "$sgrt_install_path" || exit 1
-git clone https://github.com/fpgasystems/sgrt.git
+eval "git clone --verbose https://github.com/fpgasystems/sgrt.git"
 
 
 #cleanup sgrt
