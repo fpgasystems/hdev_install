@@ -64,6 +64,7 @@ echo $local_path
 #checkout sgrt
 git clone https://github.com/fpgasystems/sgrt.git
 
+
 #cleanup sgrt
 
 #move sgrt
