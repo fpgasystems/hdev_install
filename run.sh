@@ -59,13 +59,15 @@ echo $SGRT_INSTALL_PATH
 echo $sgrt_install_path
 echo $local_path
 
-exit
+#exit
 
 #checkout sgrt
+git clone https://github.com/fpgasystems/sgrt.git
 
 #cleanup sgrt
 
 #move sgrt
+mv sgrt $sgrt_install_path
 
 #derive CLI path
 CLI_PATH="$sgrt_install_path/cli"
