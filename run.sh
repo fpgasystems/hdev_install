@@ -68,11 +68,11 @@ if [ -d "$sgrt_install_path" ]; then
 fi
 
 #create the destination directory
-mkdir -p "$sgrt_install_path" || exit 1
+sudo mkdir -p "$sgrt_install_path" || exit 1
 
 #checkout sgrt
 cd "$sgrt_install_path" || exit 1
-eval "git clone --verbose https://github.com/fpgasystems/sgrt.git"
+sudo git clone --verbose https://github.com/fpgasystems/sgrt.git
 
 
 #cleanup sgrt
