@@ -20,17 +20,19 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please follow these step
 
 ## Download the installer
 ```
-$ git clone https://github.com/fpgasystems/sgrt_install.git
+git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 
 ## Run the installer
 ```
-$ sudo ./sgrt_install/run.sh
+sudo ./sgrt_install/run.sh
 ```
+(this simulates sgrt/playbooks/sgrt-install.yml)
 
 ## Install dependencies
 * [Xilinx tools](#xilinx-tools)
 * [GitHub CLI](#github-cli)
+(this simulates alveo-cluster/playbooks/cli-install.yml)
 
 ### Xilinx tools
 hola
