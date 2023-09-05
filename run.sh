@@ -61,7 +61,17 @@ echo $local_path
 
 #exit
 
+#check on sgrt_install_path
+if [ -d "$sgrt_install_path" ]; then
+    echo "Directory '$sgrt_install_path' already exists. Exiting."
+    exit 1
+fi
+
+#create the destination directory
+mkdir -p "$sgrt_install_path" || exit 1
+
 #checkout sgrt
+cd "$sgrt_install_path" || exit 1
 git clone https://github.com/fpgasystems/sgrt.git
 
 
