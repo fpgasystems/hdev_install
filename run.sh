@@ -36,10 +36,12 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+echo ""
+echo "${bold}sgrt_install${normal}"
+
 #get sgrt_install_path
 echo ""
 read -p "${bold}Please, enter the installation path (default: $SGRT_INSTALL_PATH):${normal} " sgrt_install_path
-echo ""
 if [ -z "$sgrt_install_path" ]; then
     sgrt_install_path=$SGRT_INSTALL_PATH
 fi
@@ -47,7 +49,6 @@ fi
 #get local_path
 echo ""
 read -p "${bold}Please, enter the value for LOCAL_PATH (default: $LOCAL_PATH):${normal} " local_path
-echo ""
 if [ -z "$local_path" ]; then
     local_path=$LOCAL_PATH
 fi
