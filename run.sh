@@ -15,10 +15,10 @@ XILINX_TOOLS_PATH="/tools/Xilinx"
 XRT_PATH="/opt/xilinx/xrt"
 
 #get username
-username=$(getent passwd ${SUDO_UID})
-username=${username%%:*}
+#username=$(getent passwd ${SUDO_UID})
+#username=${username%%:*}
 
-echo $username
+#echo $username
 
 #- ACAP_SERVERS_LIST
 #- CPU_SERVERS_LIST
@@ -35,12 +35,25 @@ echo $username
 #- XRT_PATH
 
 #check if the script is run with sudo
-if [ "$EUID" -ne 0 ]; then
+#if [ "$EUID" -ne 0 ]; then
+#    echo ""
+#    echo "This script must be run with sudo. Please use 'sudo $0' to execute it."
+#    echo ""
+#    exit 1
+#fi
+
+#check if the user has sudo capabilities
+if ! sudo -n true 2>/dev/null; then
     echo ""
-    echo "This script must be run with sudo. Please use 'sudo $0' to execute it."
+    echo "The installation process requires sudo capabilities."
     echo ""
     exit 1
+#else
+#    echo "User has sudo capabilities."
 fi
+
+
+
 
 echo ""
 echo "${bold}sgrt_install${normal}"
@@ -69,16 +82,18 @@ echo $local_path
 
 #check on sgrt_install_path
 if [ -d "$sgrt_install_path" ]; then
+    echo ""
     echo "Directory '$sgrt_install_path' already exists. Exiting."
+    echo ""
     exit 1
 fi
 
 #create the destination directory
-sudo mkdir -p "$sgrt_install_path" || exit 1
+sudo mkdir -p "$sgrt_install_path" #|| exit 1
 
 #checkout sgrt
 cd "$sgrt_install_path" || exit 1
-sudo git clone --verbose https://github.com/fpgasystems/sgrt.git
+git clone --verbose https://github.com/fpgasystems/sgrt.git
 
 
 #cleanup sgrt
