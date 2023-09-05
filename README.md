@@ -12,23 +12,27 @@
   Systems Group RunTime Installation
 </h1> 
 
-<!-- **sgrt_install** helps you to install SGRT is the Systems Group RunTime developed for ETHZ-[HACC](https://github.com/fpgasystems/hacc). While [`sgutil`](./cli/manual.md#cli) allows you to create your projects and setup the infrastructure, the [API](./api/manual.md) helps you to develop your applications faster. --> 
-
-<!-- # Installation
-
-* [1. Download the installer](#1-download-the-installer)
-* [CLI](./cli/manual.md#cli)
-* [Examples](./examples.md#examples)
-* [Installation](./installation.md#installation)
-* [License](#license) -->
-
-To install [SGRT](https://github.com/fpgasystems/sgrt), please follow this steps:
+To install [SGRT](https://github.com/fpgasystems/sgrt), please follow these steps:
 
 * [Download the installer](#download-the-installer)
+* [Run the installer](#run-the-installer)
+* [Dependencies](#dependencies)
 
 ## Download the installer
-Clone this repository:
+```
+$ git clone git@github.com:fpgasystems/sgrt_install.git
+```
 
+## Run the installer
+```
+sgrt_install$ sudo install.sh
+```
+
+## Dependencies
+aaa
+
+## Limitations
+* SGRT has only been tested on Ubuntu.
 
 # License
 
