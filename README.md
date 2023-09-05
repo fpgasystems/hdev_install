@@ -29,7 +29,14 @@ sgrt_install$ sudo install.sh
 ```
 
 ## Install dependencies
-aaa
+* [Xilinx tools](#xilinx-tools)
+* [GitHub CLI](#github-cli)
+
+### Xilinx tools
+hola
+
+### GitHub CLI
+hola
 
 ## Limitations
 * SGRT has only been tested on Ubuntu.
