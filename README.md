@@ -20,12 +20,12 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please follow these step
 
 ## Download the installer
 ```
-$ git clone git@github.com:fpgasystems/sgrt_install.git
+$ git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 
 ## Run the installer
 ```
-sgrt_install$ sudo install.sh
+$ sudo ./sgrt_install/run.sh
 ```
 
 ## Install dependencies
