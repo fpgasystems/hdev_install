@@ -22,7 +22,11 @@
 * [Installation](./installation.md#installation)
 * [License](#license) -->
 
-## 1. Download the installer
+To install [SGRT](https://github.com/fpgasystems/sgrt), please follow this steps:
+
+* [Download the installer](#download-the-installer)
+
+## Download the installer
 Clone this repository:
 
 
