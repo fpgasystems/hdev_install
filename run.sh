@@ -93,6 +93,7 @@ sudo -s <<EOF
 # Change to the desired directory and create a folder
 cd /local/home/root
 mkdir -p prova
+git clone https://github.com/fpgasystems/sgrt.git
 
 # Exit from the root shell
 exit
