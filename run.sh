@@ -96,7 +96,8 @@ git clone https://github.com/fpgasystems/sgrt.git
 #cleanup sgrt
 
 #move sgrt
-mv $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
+#sudo mv $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
+sudo rsync -av $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
 
 #derive CLI path
 CLI_PATH="$sgrt_install_path/cli"
