@@ -47,7 +47,7 @@ done
 #get mpich_path
 echo ""
 echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}"
-read -p  mpich_path
+read -p "" mpich_path
 if [ -z "$mpich_path" ]; then
     mpich_path=$MPICH_PATH
 fi
