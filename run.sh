@@ -70,8 +70,8 @@ cd $RUN_PATH
 git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
-echo "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
-echo "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
+echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
 
 
 #-----------------------------------------------------------------------------
