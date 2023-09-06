@@ -67,6 +67,7 @@ fi
 
 #checkout sgrt
 cd $RUN_PATH
+echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
