@@ -28,22 +28,26 @@ git clone https://github.com/fpgasystems/sgrt_install.git
 ./sgrt_install/run.sh
 ```
 
-During the installation process, the installer will prompt you to define a set of parameters. The following information is intended to assist you in making the correct 
+During the installation process, the installer will prompt you to define a set of parameters. The following information is intended to assist you in making the correct selections:
+
+### Server prompts
+
+* Is this a build server? Answer ```yes``` if your server does not have any accelerator (ACAP, FPGA, GPU) and is intended to be a server to build applications for reconfigurable devices. 
 
 ### Paths prompts
-selections:
+
 * MPICH_PATH: This field designates the path to a valid MPICH installation, with the default setting being ```/opt/mpich```.
-* MY_DRIVERS_PATH: This parameter designates a path where a ```$USER``` has the necessary capabilities to utilize the ```rmmod``` and ```insmmod``` system calls. The default value is ```/local/home/$USER```.
+* MY_DRIVERS_PATH: This parameter designates a path where the user (```$USER```) has the necessary capabilities to utilize the ```rmmod``` and ```insmmod``` system calls. The default value is ```/local/home/$USER```.
 * MY_PROJECTS_PATH: This parameter specifies a directory where the user (```$USER```) possesses the requisite permissions to perform read, write, and application execution operations. By default, this path is defined as ```/home/$USER/sgrt_projects```, where ```/home/$USER``` typically represents an NFS hard drive that is accessible from all servers within a cluster.
-
-* ROCM_PATH:
-* XILINX_PLATFORMS_PATH:
-* XILINX_TOOLS_PATH:
-* XRT_PATH:
-
-
+* ROCM_PATH: This field designates the path to a valid ROCm installation, with the default setting being ```/opt/rocm```.
+* XILINX_PLATFORMS_PATH: This field designates the path to the Xilinx platforms installed on the server. The default value is set to ```/opt/xilinx/platforms```.
+* XILINX_TOOLS_PATH: This field designates the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is set to ```/tools/Xilinx/```.
+* XRT_PATH: This field designates the path to a valid Xilinx RunTime installation, with the default setting being ```/opt/xilinx/xrt```.
 
 ## Install dependencies
+
+The following tools must be present in the server for SGRt to run:
+
 * [Xilinx tools](#xilinx-tools)
 * [GitHub CLI](#github-cli)
 (this simulates alveo-cluster/playbooks/cli-install.yml)
@@ -55,6 +59,7 @@ hola
 hola
 
 ## Limitations
+* Deployment servers (those with at least one Xilinx reconfigurable device) can have only one valid version of Xilinx tools.
 * SGRT has only been tested on Ubuntu.
 
 # License
