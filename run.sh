@@ -86,6 +86,13 @@ echo $local_path
 
 #exit
 
+#change to sudo
+sudo -i
+
+echo $LOCAL_DRIVE_PATH
+
+exit
+
 #create the destination directory
 sudo mkdir -p $sgrt_install_path
 
