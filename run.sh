@@ -50,19 +50,17 @@ echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${nor
 read -p "" mpich_path
 if [ -z "$mpich_path" ]; then
     mpich_path=$MPICH_PATH
+    echo $mpich_path
 fi
 
 #get my_drivers_path
 echo ""
 echo "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal}"
-while true; do
-    read -p "" my_drivers_path
-    #assign to default if empty
-    if [ -z "$my_drivers_path" ]; then
-        my_drivers_path=$MY_DRIVERS_PATH
-    fi
-done
-
+read -p "" my_drivers_path
+if [ -z "$my_drivers_path" ]; then
+    my_drivers_path=$MY_DRIVERS_PATH
+    echo $my_drivers_path
+fi
 
 #test
 echo $sgrt_install_path
