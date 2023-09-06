@@ -49,19 +49,36 @@ if ! sudo -n true 2>/dev/null; then
     echo "The installation process requires sudo capabilities."
     echo ""
     exit 1
-#else
-#    echo "User has sudo capabilities."
 fi
 
 echo ""
 echo "${bold}sgrt_install${normal}"
 
 #get sgrt_install_path
+#echo ""
+#read -p "${bold}Please, enter the installation path (default: $SGRT_INSTALL_PATH):${normal} " sgrt_install_path
+#if [ -z "$sgrt_install_path" ]; then
+#    sgrt_install_path=$SGRT_INSTALL_PATH
+#fi
+
+#get sgrt_install_path
 echo ""
-read -p "${bold}Please, enter the installation path (default: $SGRT_INSTALL_PATH):${normal} " sgrt_install_path
-if [ -z "$sgrt_install_path" ]; then
-    sgrt_install_path=$SGRT_INSTALL_PATH
-fi
+echo "${bold}Please, enter the installation path (default: $SGRT_INSTALL_PATH):${normal}"
+echo ""
+while true; do
+    read -p "" sgrt_install_path
+    #assign to default if empty
+    if [ -z "$sgrt_install_path" ]; then
+        sgrt_install_path=$SGRT_INSTALL_PATH
+    fi
+    #the installation destination should not exist
+    if ! [ -d "$sgrt_install_path" ]; then
+        break
+    fi
+done
+
+
+
 
 #check on sgrt_install_path
 if [ -d "$sgrt_install_path" ]; then
@@ -83,6 +100,12 @@ fi
 echo $SGRT_INSTALL_PATH
 echo $sgrt_install_path
 echo $local_path
+
+
+
+#-----------------------------------------------------------------------------
+
+exit
 
 
 #authenticate as sudo and become root
