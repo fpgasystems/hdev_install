@@ -5,9 +5,10 @@ normal=$(tput sgr0)
 
 #default constants
 SGRT_INSTALL_PATH="/opt/sgrt"
-LOCAL_PATH="/local/home/\$USER"
+LOCAL_DRIVE_PATH="/local/home/$USER" #LOCAL_PATH="/local/home/$USER"
 MPICH_PATH="/opt/mpich"
-MY_PROJECTS_PATH="/home/\$USER/my_projects"
+SHARED_DRIVE_PATH="/home/$USER"
+SGRT_PROJECTS_PATH="$SHARED_DRIVE_PATH/sgrt_projects" #MY_PROJECTS_PATH="/home/$USER/my_projects"
 ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
@@ -52,9 +53,6 @@ if ! sudo -n true 2>/dev/null; then
 #    echo "User has sudo capabilities."
 fi
 
-
-
-
 echo ""
 echo "${bold}sgrt_install${normal}"
 
@@ -67,9 +65,9 @@ fi
 
 #get local_path
 echo ""
-read -p "${bold}Please, enter the value for LOCAL_PATH (default: $LOCAL_PATH):${normal} " local_path
+read -p "${bold}Please, enter the value for LOCAL_DRIVE_PATH (default: $LOCAL_DRIVE_PATH):${normal} " local_path
 if [ -z "$local_path" ]; then
-    local_path=$LOCAL_PATH
+    local_path=$LOCAL_DRIVE_PATH
 fi
 
 
@@ -89,23 +87,22 @@ if [ -d "$sgrt_install_path" ]; then
 fi
 
 #create the destination directory
-sudo mkdir -p "$sgrt_install_path" #|| exit 1
+sudo mkdir -p $sgrt_install_path
 
 #checkout sgrt
-cd "$sgrt_install_path" || exit 1
-sudo git clone --verbose https://github.com/fpgasystems/sgrt.git
-
+cd $SHARED_DRIVE_PATH
+git clone https://github.com/fpgasystems/sgrt.git
 
 #cleanup sgrt
 
 #move sgrt
-mv sgrt $sgrt_install_path
+mv $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
 
 #derive CLI path
 CLI_PATH="$sgrt_install_path/cli"
 
 #save constants
-echo "$local_path" > "$CLI_PATH/constants/LOCAL_PATH"
+echo "$local_path" > "$CLI_PATH/constants/LOCAL_DRIVE_PATH"
 
 
 
