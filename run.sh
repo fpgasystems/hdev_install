@@ -72,7 +72,7 @@ echo $my_drivers_path
 
 #checkout sgrt
 cd $RUN_PATH
-git clone https://github.com/fpgasystems/sgrt_install.git -b 2023-5-1
+git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
 echo $mpich_path > $RUN_PATH/sgrt/cli/constants/MPICH_PATH
