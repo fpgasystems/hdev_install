@@ -7,7 +7,7 @@ normal=$(tput sgr0)
 SGRT_INSTALL_PATH="/opt/sgrt"
 
 MPICH_PATH="/opt/mpich"
-MY_DRIVERS_PATH="/local/home/"
+MY_DRIVERS_PATH="/local/home"
 
 
 SHARED_DRIVE_PATH="/home/$USER"
@@ -46,8 +46,8 @@ done
 
 #get mpich_path
 echo ""
-echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}"
-read -p "" mpich_path
+#echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}"
+read -p "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}" mpich_path
 if [ -z "$mpich_path" ]; then
     mpich_path=$MPICH_PATH
     echo $mpich_path
