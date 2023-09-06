@@ -63,6 +63,14 @@ if [ -z "$sgrt_install_path" ]; then
     sgrt_install_path=$SGRT_INSTALL_PATH
 fi
 
+#check on sgrt_install_path
+if [ -d "$sgrt_install_path" ]; then
+    echo ""
+    echo "Directory '$sgrt_install_path' already exists. Exiting."
+    echo ""
+    exit 1
+fi
+
 #get local_path
 echo ""
 read -p "${bold}Please, enter the value for LOCAL_DRIVE_PATH (default: $LOCAL_DRIVE_PATH):${normal} " local_path
@@ -78,14 +86,6 @@ echo $local_path
 
 #exit
 
-#check on sgrt_install_path
-if [ -d "$sgrt_install_path" ]; then
-    echo ""
-    echo "Directory '$sgrt_install_path' already exists. Exiting."
-    echo ""
-    exit 1
-fi
-
 #create the destination directory
 sudo mkdir -p $sgrt_install_path
 
@@ -96,8 +96,9 @@ git clone https://github.com/fpgasystems/sgrt.git
 #cleanup sgrt
 
 #move sgrt
-#sudo mv $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
-sudo rsync -av $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
+#sudo mv $SHARED_DRIVE_PATH/sgrt/* $sgrt_install_path
+#sudo rsync -av $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
+sudo sh -c "cd '$SHARED_DRIVE_PATH/sgrt' && rsync -av . '$sgrt_install_path/'"
 
 #derive CLI path
 CLI_PATH="$sgrt_install_path/cli"
