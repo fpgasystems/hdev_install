@@ -71,7 +71,7 @@ git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
-echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH/\$USER"
 
 
 #-----------------------------------------------------------------------------
