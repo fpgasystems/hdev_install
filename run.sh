@@ -86,8 +86,9 @@ echo $local_path
 
 #exit
 
-#change to sudo
-sudo -i
+#operate as sudo
+eval "sudo cd /local/home/root" 
+eval "sudo git clone https://github.com/fpgasystems/sgrt.git"
 
 echo $LOCAL_DRIVE_PATH
 
