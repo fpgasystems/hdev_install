@@ -77,7 +77,7 @@ cd $RUN_PATH
 git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
-#echo $mpich_path > $RUN_PATH/sgrt/cli/constants/MPICH_PATH
+echo "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
 
 
 #-----------------------------------------------------------------------------
