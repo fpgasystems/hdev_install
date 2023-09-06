@@ -3,6 +3,9 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+#get RUN_PATH
+RUN_PATH="$(dirname "$0")"
+
 #default constants
 SGRT_INSTALL_PATH="/opt/sgrt"
 
@@ -67,8 +70,12 @@ echo ""
 echo $mpich_path
 echo $my_drivers_path
 
-#create files
+#checkout sgrt
+cd $RUN_PATH
+git clone https://github.com/fpgasystems/sgrt_install.git -b 2023-5-1
 
+#fill up files
+echo $mpich_path > $RUN_PATH/sgrt/cli/constants/MPICH_PATH
 
 
 #-----------------------------------------------------------------------------
