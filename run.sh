@@ -84,7 +84,24 @@ echo $SGRT_INSTALL_PATH
 echo $sgrt_install_path
 echo $local_path
 
-#exit
+
+#authenticate as sudo and become root
+sudo -s <<EOF
+
+# Now you are running as root
+
+# Change to the desired directory and create a folder
+cd /local/home/root
+mkdir -p prova
+
+# Exit from the root shell
+exit
+
+EOF
+
+echo $SGRT_INSTALL_PATH
+echo $sgrt_install_path
+echo $local_path
 
 #operate as sudo
 eval "sudo cd /local/home/root" 
