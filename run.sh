@@ -103,6 +103,10 @@ echo $SGRT_INSTALL_PATH
 echo $sgrt_install_path
 echo $local_path
 
+exit
+
+#hola desde 2023-5-1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 #operate as sudo
 eval "sudo cd /local/home/root" 
 eval "sudo git clone https://github.com/fpgasystems/sgrt.git"
