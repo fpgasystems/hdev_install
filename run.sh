@@ -4,7 +4,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 #get RUN_PATH
-RUN_PATH="$(dirname "$0")"
+RUN_PATH="$(readlink -f "$0")" #"$(dirname "$0")"
 
 #default constants
 SGRT_INSTALL_PATH="/opt/sgrt"
