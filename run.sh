@@ -47,7 +47,7 @@ done
 #get mpich_path
 echo ""
 #echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}"
-read -p "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}" mpich_path
+read -p "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal} " mpich_path
 if [ -z "$mpich_path" ]; then
     mpich_path=$MPICH_PATH
     echo $mpich_path
@@ -55,8 +55,7 @@ fi
 
 #get my_drivers_path
 echo ""
-echo "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal}"
-read -p "" my_drivers_path
+read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
     my_drivers_path=$MY_DRIVERS_PATH
     echo $my_drivers_path
