@@ -12,7 +12,7 @@
   Systems Group RunTime Installation
 </h1> 
 
-To install [SGRT](https://github.com/fpgasystems/sgrt), please follow these steps:
+To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by following these steps:
 
 * [Download the installer](#download-the-installer)
 * [Run the installer](#run-the-installer)
@@ -25,9 +25,23 @@ git clone https://github.com/fpgasystems/sgrt_install.git
 
 ## Run the installer
 ```
-sudo ./sgrt_install/run.sh
+./sgrt_install/run.sh
 ```
-(this simulates sgrt/playbooks/sgrt-install.yml)
+
+During the installation process, the installer will prompt you to define a set of parameters. The following information is intended to assist you in making the correct 
+
+### Paths prompts
+selections:
+* MPICH_PATH: This field designates the path to a valid MPICH installation, with the default setting being ```/opt/mpich```.
+* MY_DRIVERS_PATH: This parameter designates a path where a ```$USER``` has the necessary capabilities to utilize the ```rmmod``` and ```insmmod``` system calls. The default value is ```/local/home/$USER```.
+* MY_PROJECTS_PATH: This parameter specifies a directory where the user (```$USER```) possesses the requisite permissions to perform read, write, and application execution operations. By default, this path is defined as ```/home/$USER/sgrt_projects```, where ```/home/$USER``` typically represents an NFS hard drive that is accessible from all servers within a cluster.
+
+* ROCM_PATH:
+* XILINX_PLATFORMS_PATH:
+* XILINX_TOOLS_PATH:
+* XRT_PATH:
+
+
 
 ## Install dependencies
 * [Xilinx tools](#xilinx-tools)
