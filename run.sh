@@ -74,6 +74,8 @@ echo $my_drivers_path
 cd $RUN_PATH
 git clone https://github.com/fpgasystems/sgrt.git
 
+echo "$RUN_PATH/sgrt/cli/constants"
+
 #fill up files
 echo $mpich_path > $RUN_PATH/sgrt/cli/constants/MPICH_PATH
 
