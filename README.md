@@ -36,21 +36,21 @@ During the installation process, the installer will prompt you to define a set o
 
 ### Paths prompts
 
-* MPICH_PATH: This field designates the path to a valid MPICH installation, with the default setting being ```/opt/mpich```.
-* MY_DRIVERS_PATH: This parameter designates a path where the user (```$USER```) has the necessary capabilities to utilize the ```rmmod``` and ```insmmod``` system calls. The default value is ```/local/home/$USER```.
-* MY_PROJECTS_PATH: This parameter specifies a directory where the user (```$USER```) possesses the requisite permissions to perform read, write, and application execution operations. By default, this path is defined as ```/home/$USER/sgrt_projects```, where ```/home/$USER``` typically represents an NFS hard drive that is accessible from all servers within a cluster.
-* ROCM_PATH: This field designates the path to a valid ROCm installation, with the default setting being ```/opt/rocm```.
-* XILINX_PLATFORMS_PATH: This field designates the path to the Xilinx platforms installed on the server. The default value is set to ```/opt/xilinx/platforms```.
-* XILINX_TOOLS_PATH: This field designates the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is set to ```/tools/Xilinx/```.
-* XRT_PATH: This field designates the path to a valid Xilinx RunTime installation, with the default setting being ```/opt/xilinx/xrt```.
+* **MPICH_PATH:** This parameter designates the path to a valid MPICH installation, with the default setting located at ```/opt/mpich```.
+* **MY_DRIVERS_PATH:** This parameter specifies a directory where the user (```$USER```) should possess the necessary permissions to employ the ```rmmod``` and ```insmod``` system calls. By default, this path is configured as ```/local/home/$USER```.
+* **MY_PROJECTS_PATH:** This parameter designates a directory where the user (```$USER```) must have the required privileges to conduct read, write, and application execution operations. The default setting is ```/home/$USER/sgrt_projects```, where ```/home/$USER``` typically corresponds to an NFS hard drive accessible from all servers within a cluster.
+* **ROCM_PATH:** This field specifies the path to a valid ROCm installation, with the default location set at ```/opt/rocm```.
+* **XILINX_PLATFORMS_PATH:** This parameter designates the path to the Xilinx platforms installed on the server. The default value is configured as ```/opt/xilinx/platforms```.
+* **XILINX_TOOLS_PATH:** This field specifies the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is established as ```/tools/Xilinx/```.
+* **XRT_PATH:** This parameter designates the path to a valid Xilinx RunTime installation, with the default setting positioned at ```/opt/xilinx/xrt```.
 
-## Install dependencies
+## Install dependencies (this simulates alveo-cluster/playbooks/cli-install.yml)
 
 The following tools must be present in the server for SGRt to run:
 
 * [Xilinx tools](#xilinx-tools)
 * [GitHub CLI](#github-cli)
-(this simulates alveo-cluster/playbooks/cli-install.yml)
+
 
 ### Xilinx tools
 hola
