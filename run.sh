@@ -109,16 +109,16 @@ git clone https://github.com/fpgasystems/sgrt.git
 rm $RUN_PATH/sgrt/*.md
 rm $RUN_PATH/sgrt/*.png
 #docs
-if [ -d "$RUN_PATH/sgrt/cli/docs" ]; then
-    rm -rf $RUN_PATH/sgrt/cli/docs
+if [ -d "$RUN_PATH/sgrt/docs" ]; then
+    rm -rf $RUN_PATH/sgrt/docs
 fi
 #playbooks
-if [ -d "$RUN_PATH/sgrt/cli/playbooks" ]; then
-    rm -rf $RUN_PATH/sgrt/cli/playbooks
+if [ -d "$RUN_PATH/sgrt/playbooks" ]; then
+    rm -rf $RUN_PATH/sgrt/playbooks
 fi
 #trash
-if [ -d "$RUN_PATH/sgrt/cli/trash" ]; then
-    rm -rf $RUN_PATH/sgrt/cli/trash
+if [ -d "$RUN_PATH/sgrt/trash" ]; then
+    rm -rf $RUN_PATH/sgrt/trash
 fi
 
 #fill up files
