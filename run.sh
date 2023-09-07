@@ -57,7 +57,7 @@ echo ""
 read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
     #my_drivers_path="${MY_DRIVERS_PATH//$/\\$}"
-    my_drivers_path="${MY_DRIVERS_PATH//\$USER/\\\\\$USER}" #"${MY_DRIVERS_PATH/$USER/\\\$USER}"
+    my_drivers_path="${MY_DRIVERS_PATH/\$USER/\\\$USER}" #"${MY_DRIVERS_PATH//\$USER/\\\\\$USER}" #"${MY_DRIVERS_PATH/$USER/\\\$USER}"
     echo $my_drivers_path
 fi
 
@@ -66,7 +66,7 @@ echo ""
 read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
 if [ -z "$my_projects_path" ]; then
     #my_projects_path="${MY_PROJECTS_PATH//$/\\$}"
-    my_projects_path="${MY_PROJECTS_PATH//\$USER/\\\\\$USER}" #"${MY_PROJECTS_PATH/$USER/\\\$USER}"
+    my_projects_path="${MY_PROJECTS_PATH/\$USER/\\\$USER}" #"${MY_PROJECTS_PATH//\$USER/\\\\\$USER}" #"${MY_PROJECTS_PATH/$USER/\\\$USER}"
     echo $my_projects_path
 fi
 
