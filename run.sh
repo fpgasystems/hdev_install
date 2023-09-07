@@ -11,11 +11,8 @@ RUN_PATH=$(dirname "$RUN_PATH")
 SGRT_INSTALL_PATH="/opt/sgrt"
 
 MPICH_PATH="/opt/mpich"
-MY_DRIVERS_PATH="/local/home"
-
-
-SHARED_DRIVE_PATH="/home/$USER"
-SGRT_PROJECTS_PATH="$SHARED_DRIVE_PATH/sgrt_projects" #MY_PROJECTS_PATH="/home/$USER/my_projects"
+MY_DRIVERS_PATH="/local/home/$USER"
+MY_PROJECTS_PATH="/home/$USER/sgrt_projects"
 ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
@@ -61,8 +58,16 @@ fi
 echo ""
 read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
-    my_drivers_path=$MY_DRIVERS_PATH
+    my_drivers_path="${MY_DRIVERS_PATH//$/\\$}"    
     echo $my_drivers_path
+fi
+
+#get my_projects_path
+echo ""
+read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
+if [ -z "$my_projects_path" ]; then
+    my_projects_path="${MY_PROJECTS_PATH//$/\\$}"
+    echo $my_projects_path
 fi
 
 #checkout sgrt
@@ -72,7 +77,8 @@ git clone https://github.com/fpgasystems/sgrt.git
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
-echo -n "$my_drivers_path/\$USER" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+echo -n "$my_projects_path" > "$RUN_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
 
 
 #-----------------------------------------------------------------------------
