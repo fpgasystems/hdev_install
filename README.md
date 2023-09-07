@@ -14,16 +14,17 @@
 
 To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by following these steps:
 
-* [Download the installer](#download-the-installer)
-* [Run the installer](#run-the-installer)
-* [Install dependencies](#install-dependencies)
+* [Downloading the installer](#downloading-the-installer)
+* [Running the installer](#running-the-installer)
+* [Installing dependencies](#installing-dependencies)
+* [Setting up Xilinx tools](#setting-up-xilinx-tools)
 
-## Download the installer
+## Downloading the installer
 ```
 git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 
-## Run the installer
+## Running the installer
 ```
 ./sgrt_install/run.sh
 ```
@@ -46,19 +47,21 @@ During the installation process, the installer will prompt you to define a set o
 
 Please note that you have the flexibility to utilize any other environment variable distinct from ```$USER``` to define your paths.
 
-## Install dependencies (this simulates alveo-cluster/playbooks/cli-install.yml)
+## Installing dependencies (this simulates alveo-cluster/playbooks/cli-install.yml)
 
-The following tools must be present in the server for SGRt to run:
-
-* [Xilinx tools](#xilinx-tools)
-* [GitHub CLI](#github-cli)
-
+To ensure proper functionality, the following tools must be present on the server for SGRT to run:
 
 ### Xilinx tools
-hola
+In the case of deployment servers, only one XRT version should be present on the system.
+
+* **XRT (Xilinx RunTime):** To ensure proper operation, a valid XRT version must be present in the designated ```XRT_PATH```. 
+* **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
+* **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
 ### GitHub CLI
 hola
+
+## Setting up Xilinx tools
 
 ## Limitations
 * Deployment servers (those with at least one Xilinx reconfigurable device) can have only one valid version of Xilinx tools.
