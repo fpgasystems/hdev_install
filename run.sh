@@ -19,7 +19,7 @@ RUN_PATH="$(readlink -f "$0")"
 RUN_PATH=$(dirname "$RUN_PATH")
 
 #default constants
-SGRT_BASE_PATH="/opt/sgrt"
+SGRT_BASE_PATH="/opt" #/opt/sgrt
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
 MY_PROJECTS_PATH="/home/\$USER/sgrt_projects"
@@ -56,7 +56,7 @@ while true; do
 done
 
 #derive cli_path
-cli_path=$sgrt_base_path/cli
+cli_path=$sgrt_base_path/sgrt/cli #$sgrt_base_path/cli
 
 #get mpich_path
 echo ""
@@ -140,7 +140,7 @@ rm -rf $RUN_PATH/sgrt/api/manual
 rm $RUN_PATH/sgrt/cli/*.md
 rm -rf $RUN_PATH/sgrt/cli/manual
 #sgrt/cli completion
-rm $RUN_PATH/sgrt/cli/$CLI_NAME_completion.sh
+#rm $RUN_PATH/sgrt/cli/$CLI_NAME_completion.sh
 
 #manage scripts
 chmod_x $RUN_PATH/sgrt/cli
@@ -164,13 +164,21 @@ echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORM
 echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 
+#change ownership
+#sudo chown root:root $RUN_PATH/sgrt
+
+echo "Holaaaaaa"
+echo $sgrt_base_path
+echo $cli_path
+echo $CLI_NAME
+
 #copy to sgrt_base_path
 #sudo mv $RUN_PATH/sgrt $sgrt_base_path
-sudo mv "$RUN_PATH/sgrt" "$sgrt_base_path/"
+sudo cp "$RUN_PATH/sgrt" "$sgrt_base_path/"
 
 #adding to profile.d (system-wide $PATH)
 #sudo echo -n "PATH=$PATH:$cli_path" > /etc/profile.d/$CLI_NAME.sh
 echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh"
 
 #copying sgutil_completion
-sudo cp $cli_path/$CLI_NAME"_completion.sh" /usr/share/bash-completion/completions/$CLI_NAME
+sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
