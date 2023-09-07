@@ -108,8 +108,11 @@ git clone https://github.com/fpgasystems/sgrt.git
 #sgrt cleanup
 rm $RUN_PATH/sgrt/*.md
 rm $RUN_PATH/sgrt/*.png
+rm $RUN_PATH/sgrt/LICENSE
 #docs
 rm -rf $RUN_PATH/sgrt/docs
+#examples
+rm -rf $RUN_PATH/sgrt/examples
 #playbooks
 rm -rf $RUN_PATH/sgrt/playbooks
 #trash
