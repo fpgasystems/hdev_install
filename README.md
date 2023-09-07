@@ -51,16 +51,23 @@ Please note that you have the flexibility to utilize any other environment varia
 
 To ensure proper functionality, the following tools must be present on the server for SGRT to run:
 
-### GitHub CLI
-[GitHub CLI](https://cli.github.com) must be available on the server.
-
 ### Xilinx tools and platforms
+For those servers with reconfigurable devices, the following criteria apply:
 
 * **XRT (Xilinx RunTime):** To ensure proper operation, a valid XRT version must be present in the designated ```XRT_PATH```. 
 * **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
 * **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
 Finally, as a vital requirement, all platforms installed on the deployment server must be readily available within the designated ```XILINX_PLATFORMS_PATH``` directory.
+
+### HIP and ROCm tools
+For servers equipped with GPUs, a valid HIP/ROCm release must be present in the designated ```ROCM_PATH``` directory.
+
+### Other tools
+Besides the tools listed above, the following are also required to make SGRT fully operative:
+
+* [GitHub CLI](https://cli.github.com)
+* [MPICH](https://www.mpich.org)
 
 ## System configuration
 
@@ -70,7 +77,8 @@ Mencionar els grups
 
 ## Limitations
 * SGRT has only been tested on Ubuntu 20.04.6 LTS.
-* For deployment servers, it's imperative to maintain a single version of the Xilinx toolset (comprising XRT, Vivado, and Vitis_HLS) on the system. Multiple versions of these tools should not coexist to ensure proper operation.
+* For deployment servers with reconfigurable devices, it's imperative to maintain a single version of the Xilinx toolset (comprising XRT, Vivado, and Vitis_HLS) on the system. Multiple versions of these tools should not coexist to ensure proper operation.
+* For deployment servers with GPUs, only one version of HIP/ROCm should be installed.
 
 # License
 
