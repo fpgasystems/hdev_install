@@ -3,6 +3,13 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+remove_sh() {
+    path="$1"
+    for file in "$path"/*.sh; do
+        mv "$file" "${file%.sh}"
+    done
+}
+
 #get RUN_PATH
 RUN_PATH="$(readlink -f "$0")"
 RUN_PATH=$(dirname "$RUN_PATH")
@@ -129,9 +136,20 @@ rm -rf $RUN_PATH/sgrt/cli/manual
 rm $RUN_PATH/sgrt/cli/sgutil_completion.sh
 
 #rename cli scripts
-mv $RUN_PATH/sgrt/cli/examine.sh $RUN_PATH/sgrt/cli/examine
-mv $RUN_PATH/sgrt/cli/reboot.sh $RUN_PATH/sgrt/cli/reboot
-mv $RUN_PATH/sgrt/cli/sgutil.sh $RUN_PATH/sgrt/cli/sgutil
+#mv $RUN_PATH/sgrt/cli/examine.sh $RUN_PATH/sgrt/cli/examine
+#mv $RUN_PATH/sgrt/cli/reboot.sh $RUN_PATH/sgrt/cli/reboot
+#mv $RUN_PATH/sgrt/cli/sgutil.sh $RUN_PATH/sgrt/cli/sgutil
+
+remove_sh $RUN_PATH/sgrt/cli
+remove_sh $RUN_PATH/sgrt/cli/build
+remove_sh $RUN_PATH/sgrt/cli/common
+remove_sh $RUN_PATH/sgrt/cli/enable
+remove_sh $RUN_PATH/sgrt/cli/get
+remove_sh $RUN_PATH/sgrt/cli/new
+remove_sh $RUN_PATH/sgrt/cli/program
+remove_sh $RUN_PATH/sgrt/cli/run
+remove_sh $RUN_PATH/sgrt/cli/set
+remove_sh $RUN_PATH/sgrt/cli/validate
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
