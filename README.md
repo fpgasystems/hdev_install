@@ -16,8 +16,8 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by follow
 
 * [Downloading the installer](#downloading-the-installer)
 * [Running the installer](#running-the-installer)
-* [Installing dependencies](#installing-dependencies)
-* [Setting up Xilinx tools](#setting-up-xilinx-tools)
+* [Prerequisite software](#prerequisite-software)
+* [System configuration](#setting-up-xilinx-tools)
 
 ## Downloading the installer
 ```
@@ -47,25 +47,30 @@ During the installation process, the installer will prompt you to define a set o
 
 Please note that you have the flexibility to utilize any other environment variable distinct from ```$USER``` to define your paths.
 
-## Installing dependencies (this simulates alveo-cluster/playbooks/cli-install.yml)
+## Prerequisite software 
 
 To ensure proper functionality, the following tools must be present on the server for SGRT to run:
 
-### Xilinx tools
-In the case of deployment servers, only one XRT version should be present on the system.
+### GitHub CLI
+[GitHub CLI](https://cli.github.com) must be available on the server.
+
+### Xilinx tools and platforms
 
 * **XRT (Xilinx RunTime):** To ensure proper operation, a valid XRT version must be present in the designated ```XRT_PATH```. 
 * **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
 * **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
-### GitHub CLI
-hola
+Finally, as a vital requirement, all platforms installed on the deployment server must be readily available within the designated ```XILINX_PLATFORMS_PATH``` directory.
 
-## Setting up Xilinx tools
+## System configuration
+
+Mencionar els grups
+
+### Vivado configuration
 
 ## Limitations
-* Deployment servers (those with at least one Xilinx reconfigurable device) can have only one valid version of Xilinx tools.
-* SGRT has only been tested on Ubuntu.
+* SGRT has only been tested on Ubuntu 20.04.6 LTS.
+* For deployment servers, it's imperative to maintain a single version of the Xilinx toolset (comprising XRT, Vivado, and Vitis_HLS) on the system. Multiple versions of these tools should not coexist to ensure proper operation.
 
 # License
 
