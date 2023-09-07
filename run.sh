@@ -10,8 +10,8 @@ RUN_PATH=$(dirname "$RUN_PATH")
 #default constants
 SGRT_INSTALL_PATH="/opt/sgrt"
 MPICH_PATH="/opt/mpich"
-MY_DRIVERS_PATH="/local/home/$USER"
-MY_PROJECTS_PATH="/home/$USER/sgrt_projects"
+MY_DRIVERS_PATH="/local/home/\$USER"
+MY_PROJECTS_PATH="/home/\$USER/sgrt_projects"
 ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
