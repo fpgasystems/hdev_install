@@ -3,10 +3,11 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-remove_sh() {
+chmod_x() {
     path="$1"
     for file in "$path"/*.sh; do
         mv "$file" "${file%.sh}"
+        chmod +x "$file"
     done
 }
 
@@ -135,21 +136,21 @@ rm -rf $RUN_PATH/sgrt/cli/manual
 #sgrt/cli completion
 rm $RUN_PATH/sgrt/cli/sgutil_completion.sh
 
-#rename cli scripts
+#manage scripts
 #mv $RUN_PATH/sgrt/cli/examine.sh $RUN_PATH/sgrt/cli/examine
 #mv $RUN_PATH/sgrt/cli/reboot.sh $RUN_PATH/sgrt/cli/reboot
 #mv $RUN_PATH/sgrt/cli/sgutil.sh $RUN_PATH/sgrt/cli/sgutil
 
-remove_sh $RUN_PATH/sgrt/cli
-remove_sh $RUN_PATH/sgrt/cli/build
-remove_sh $RUN_PATH/sgrt/cli/common
-remove_sh $RUN_PATH/sgrt/cli/enable
-remove_sh $RUN_PATH/sgrt/cli/get
-remove_sh $RUN_PATH/sgrt/cli/new
-remove_sh $RUN_PATH/sgrt/cli/program
-remove_sh $RUN_PATH/sgrt/cli/run
-remove_sh $RUN_PATH/sgrt/cli/set
-remove_sh $RUN_PATH/sgrt/cli/validate
+chmod_x $RUN_PATH/sgrt/cli
+chmod_x $RUN_PATH/sgrt/cli/build
+chmod_x $RUN_PATH/sgrt/cli/common
+chmod_x $RUN_PATH/sgrt/cli/enable
+chmod_x $RUN_PATH/sgrt/cli/get
+chmod_x $RUN_PATH/sgrt/cli/new
+chmod_x $RUN_PATH/sgrt/cli/program
+chmod_x $RUN_PATH/sgrt/cli/run
+chmod_x $RUN_PATH/sgrt/cli/set
+chmod_x $RUN_PATH/sgrt/cli/validate
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
