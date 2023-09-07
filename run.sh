@@ -105,6 +105,18 @@ cd $RUN_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
+#cleanup
+rm $RUN_PATH/sgrt/cli/*.md
+rm $RUN_PATH/sgrt/cli/*.png
+#playbooks
+if [ -d "$RUN_PATH/sgrt/cli/playbooks" ]; then
+    rm -rf $RUN_PATH/sgrt/cli/playbooks
+fi
+#trash
+if [ -d "$RUN_PATH/sgrt/cli/trash" ]; then
+    rm -rf $RUN_PATH/sgrt/cli/trash
+fi
+
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
 echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
