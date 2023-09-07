@@ -48,6 +48,7 @@ while true; do
     #assign to default if empty
     if [ -z "$sgrt_base_path" ]; then
         sgrt_base_path=$SGRT_BASE_PATH
+        echo $sgrt_base_path/sgrt
     fi
     #the installation destination should not exist
     if ! [ -d "$sgrt_base_path/sgrt" ]; then
