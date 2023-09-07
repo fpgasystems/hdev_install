@@ -106,8 +106,12 @@ echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
 #cleanup
-rm $RUN_PATH/sgrt/cli/*.md
-rm $RUN_PATH/sgrt/cli/*.png
+rm $RUN_PATH/sgrt/*.md
+rm $RUN_PATH/sgrt/*.png
+#docs
+if [ -d "$RUN_PATH/sgrt/cli/docs" ]; then
+    rm -rf $RUN_PATH/sgrt/cli/docs
+fi
 #playbooks
 if [ -d "$RUN_PATH/sgrt/cli/playbooks" ]; then
     rm -rf $RUN_PATH/sgrt/cli/playbooks
