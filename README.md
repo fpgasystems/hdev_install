@@ -44,6 +44,8 @@ During the installation process, the installer will prompt you to define a set o
 * **XILINX_TOOLS_PATH:** This field specifies the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is established as ```/tools/Xilinx/```.
 * **XRT_PATH:** This parameter designates the path to a valid Xilinx RunTime installation, with the default setting positioned at ```/opt/xilinx/xrt```.
 
+Please note that you have the flexibility to utilize any other environment variable distinct from ```$USER``` to define your paths.
+
 ## Install dependencies (this simulates alveo-cluster/playbooks/cli-install.yml)
 
 The following tools must be present in the server for SGRt to run:
