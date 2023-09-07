@@ -51,14 +51,14 @@ Please note that you have the flexibility to utilize any other environment varia
 
 To ensure proper functionality, the following tools must be present on the server for SGRT to run:
 
-### Xilinx tools and platforms
+### Xilinx tools and deployment target platforms
 For those servers with reconfigurable devices, the following criteria apply:
 
 * **XRT (Xilinx RunTime):** To ensure proper operation, a valid XRT version must be present in the designated ```XRT_PATH```. 
 * **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
 * **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
-Finally, as a vital requirement, all **Xilinx platforms** mounted on the deployment server must be readily available within the designated ```XILINX_PLATFORMS_PATH``` directory.
+Finally, as a vital requirement, all the Xilinx accelerator cards mounted on the deployment server must have their **deployment target platform toolkit** available within the designated ```XILINX_PLATFORMS_PATH``` directory.
 
 ### HIP and ROCm tools
 For servers equipped with GPUs, a valid HIP/ROCm release must be present in the designated ```ROCM_PATH``` directory.
