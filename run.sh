@@ -137,10 +137,6 @@ rm -rf $RUN_PATH/sgrt/cli/manual
 rm $RUN_PATH/sgrt/cli/sgutil_completion.sh
 
 #manage scripts
-#mv $RUN_PATH/sgrt/cli/examine.sh $RUN_PATH/sgrt/cli/examine
-#mv $RUN_PATH/sgrt/cli/reboot.sh $RUN_PATH/sgrt/cli/reboot
-#mv $RUN_PATH/sgrt/cli/sgutil.sh $RUN_PATH/sgrt/cli/sgutil
-
 chmod_x $RUN_PATH/sgrt/cli
 chmod_x $RUN_PATH/sgrt/cli/build
 chmod_x $RUN_PATH/sgrt/cli/common
