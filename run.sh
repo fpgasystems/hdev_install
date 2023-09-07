@@ -120,7 +120,9 @@ echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 
 #replace $USER string
-sed -i 's/jmoyapaya/$USER/g' $RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH
+#sed -i 's/jmoyapaya/$USER/g' $RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH
+sed -i "s/\\\$USER/$USER/g" "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+
 
 
 
