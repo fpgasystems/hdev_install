@@ -11,12 +11,15 @@ chmod_x() {
     done
 }
 
+#constants
+CLI_NAME="sgutil"
+
 #get RUN_PATH
 RUN_PATH="$(readlink -f "$0")"
 RUN_PATH=$(dirname "$RUN_PATH")
 
 #default constants
-SGRT_INSTALL_PATH="/opt/sgrt"
+SGRT_BASE_PATH="/opt/sgrt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
 MY_PROJECTS_PATH="/home/\$USER/sgrt_projects"
@@ -37,20 +40,23 @@ fi
 echo ""
 echo "${bold}sgrt_install${normal}"
 
-#get sgrt_install_path
+#get sgrt_base_path
 echo ""
-echo "${bold}Please, enter the installation path (default: $SGRT_INSTALL_PATH):${normal}"
+echo "${bold}Please, enter the installation path (default: $SGRT_BASE_PATH):${normal}"
 while true; do
-    read -p "" sgrt_install_path
+    read -p "" sgrt_base_path
     #assign to default if empty
-    if [ -z "$sgrt_install_path" ]; then
-        sgrt_install_path=$SGRT_INSTALL_PATH
+    if [ -z "$sgrt_base_path" ]; then
+        sgrt_base_path=$SGRT_BASE_PATH
     fi
     #the installation destination should not exist
-    if ! [ -d "$sgrt_install_path" ]; then
+    if ! [ -d "$sgrt_base_path" ]; then
         break
     fi
 done
+
+#derive cli_path
+cli_path=$sgrt_base_path/cli
 
 #get mpich_path
 echo ""
@@ -134,7 +140,7 @@ rm -rf $RUN_PATH/sgrt/api/manual
 rm $RUN_PATH/sgrt/cli/*.md
 rm -rf $RUN_PATH/sgrt/cli/manual
 #sgrt/cli completion
-rm $RUN_PATH/sgrt/cli/sgutil_completion.sh
+rm $RUN_PATH/sgrt/cli/$CLI_NAME_completion.sh
 
 #manage scripts
 chmod_x $RUN_PATH/sgrt/cli
@@ -158,62 +164,13 @@ echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORM
 echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 
+#copy to sgrt_base_path
+#sudo mv $RUN_PATH/sgrt $sgrt_base_path
+sudo mv "$RUN_PATH/sgrt" "$sgrt_base_path/"
 
-#-----------------------------------------------------------------------------
+#adding to profile.d (system-wide $PATH)
+#sudo echo -n "PATH=$PATH:$cli_path" > /etc/profile.d/$CLI_NAME.sh
+echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh"
 
-exit
-
-
-#authenticate as sudo and become root
-sudo -s <<EOF
-
-# Now you are running as root
-
-# Change to the desired directory and create a folder
-cd /local/home/root
-mkdir -p prova
-git clone https://github.com/fpgasystems/sgrt.git
-
-# Exit from the root shell
-exit
-
-EOF
-
-echo $SGRT_INSTALL_PATH
-echo $sgrt_install_path
-echo $local_path
-
-exit
-
-#hola desde 2023-5-1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-#operate as sudo
-eval "sudo cd /local/home/root" 
-eval "sudo git clone https://github.com/fpgasystems/sgrt.git"
-
-echo $LOCAL_DRIVE_PATH
-
-exit
-
-#create the destination directory
-sudo mkdir -p $sgrt_install_path
-
-#checkout sgrt
-cd $SHARED_DRIVE_PATH
-git clone https://github.com/fpgasystems/sgrt.git
-
-#cleanup sgrt
-
-#move sgrt
-#sudo mv $SHARED_DRIVE_PATH/sgrt/* $sgrt_install_path
-#sudo rsync -av $SHARED_DRIVE_PATH/sgrt $sgrt_install_path
-sudo sh -c "cd '$SHARED_DRIVE_PATH/sgrt' && rsync -av . '$sgrt_install_path/'"
-
-#derive CLI path
-CLI_PATH="$sgrt_install_path/cli"
-
-#save constants
-echo "$local_path" > "$CLI_PATH/constants/LOCAL_DRIVE_PATH"
-
-
-
+#copying sgutil_completion
+sudo cp $cli_path/$CLI_NAME"_completion.sh" /usr/share/bash-completion/completions/$CLI_NAME
