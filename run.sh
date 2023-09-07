@@ -125,6 +125,13 @@ rm -rf $RUN_PATH/sgrt/api/manual
 #sgrt/cli docs
 rm $RUN_PATH/sgrt/cli/*.md
 rm -rf $RUN_PATH/sgrt/cli/manual
+#sgrt/cli completion
+rm $RUN_PATH/sgrt/cli/sgutil_completion.sh
+
+#rename cli scripts
+mv $RUN_PATH/sgrt/cli/examine.sh $RUN_PATH/sgrt/cli/examine
+mv $RUN_PATH/sgrt/cli/reboot.sh $RUN_PATH/sgrt/cli/reboot
+mv $RUN_PATH/sgrt/cli/sgutil.sh $RUN_PATH/sgrt/cli/sgutil
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
