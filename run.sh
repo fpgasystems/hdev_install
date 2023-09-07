@@ -6,8 +6,8 @@ normal=$(tput sgr0)
 chmod_x() {
     path="$1"
     for file in "$path"/*.sh; do
-        mv "$file" "${file%.sh}"
         chmod +x "$file"
+        mv "$file" "${file%.sh}"
     done
 }
 
