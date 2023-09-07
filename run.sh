@@ -105,21 +105,23 @@ cd $RUN_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
-#cleanup
+#sgrt cleanup
 rm $RUN_PATH/sgrt/*.md
 rm $RUN_PATH/sgrt/*.png
 #docs
-if [ -d "$RUN_PATH/sgrt/docs" ]; then
-    rm -rf $RUN_PATH/sgrt/docs
-fi
+rm -rf $RUN_PATH/sgrt/docs
 #playbooks
-if [ -d "$RUN_PATH/sgrt/playbooks" ]; then
-    rm -rf $RUN_PATH/sgrt/playbooks
-fi
+rm -rf $RUN_PATH/sgrt/playbooks
 #trash
 if [ -d "$RUN_PATH/sgrt/trash" ]; then
     rm -rf $RUN_PATH/sgrt/trash
 fi
+#sgrt/api docs
+rm $RUN_PATH/sgrt/api/*.md
+rm -rf $RUN_PATH/sgrt/api/manual
+#sgrt/cli docs
+rm $RUN_PATH/sgrt/cli/*.md
+rm -rf $RUN_PATH/sgrt/cli/manual
 
 #fill up files
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
