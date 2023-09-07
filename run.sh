@@ -57,7 +57,8 @@ echo ""
 read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
     #my_drivers_path="${MY_DRIVERS_PATH//$/\\$}"
-    my_drivers_path="${MY_DRIVERS_PATH//\$USER/\\\$USER}" #"${MY_DRIVERS_PATH/\$USER/\\\$USER}" #"${MY_DRIVERS_PATH//\$USER/\\\\\$USER}" #"${MY_DRIVERS_PATH/$USER/\\\$USER}"
+    #my_drivers_path="${MY_DRIVERS_PATH//\$USER/\\\$USER}" #"${MY_DRIVERS_PATH/\$USER/\\\$USER}" #"${MY_DRIVERS_PATH//\$USER/\\\\\$USER}" #"${MY_DRIVERS_PATH/$USER/\\\$USER}"
+    my_drivers_path=$MY_DRIVERS_PATH
     echo $my_drivers_path
 fi
 
@@ -66,7 +67,8 @@ echo ""
 read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
 if [ -z "$my_projects_path" ]; then
     #my_projects_path="${MY_PROJECTS_PATH//$/\\$}"
-    my_projects_path="${MY_PROJECTS_PATH//\$USER/\\\$USER}" #"${MY_PROJECTS_PATH/\$USER/\\\$USER}" #"${MY_PROJECTS_PATH//\$USER/\\\\\$USER}" #"${MY_PROJECTS_PATH/$USER/\\\$USER}"
+    #my_projects_path="${MY_PROJECTS_PATH//\$USER/\\\$USER}" #"${MY_PROJECTS_PATH/\$USER/\\\$USER}" #"${MY_PROJECTS_PATH//\$USER/\\\\\$USER}" #"${MY_PROJECTS_PATH/$USER/\\\$USER}"
+    my_projects_path=$MY_PROJECTS_PATH
     echo $my_projects_path
 fi
 
@@ -116,6 +118,9 @@ echo -n "$VIVADO_DEVICES_MAX" > "$RUN_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX
 echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
 echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
+
+#replace $USER string
+sed -i 's/jmoyapaya/$USER/g' MY_DRIVERS_PATH
 
 
 
