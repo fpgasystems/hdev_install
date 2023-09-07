@@ -58,7 +58,7 @@ For those servers with reconfigurable devices, the following criteria apply:
 * **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
 * **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
-Finally, as a vital requirement, all platforms installed on the deployment server must be readily available within the designated ```XILINX_PLATFORMS_PATH``` directory.
+Finally, as a vital requirement, all **Xilinx platforms** mounted on the deployment server must be readily available within the designated ```XILINX_PLATFORMS_PATH``` directory.
 
 ### HIP and ROCm tools
 For servers equipped with GPUs, a valid HIP/ROCm release must be present in the designated ```ROCM_PATH``` directory.
@@ -71,12 +71,24 @@ Besides the tools listed above, the following are also required to make SGRT ful
 
 ## System configuration
 
-Mencionar els grups
+The user groups **all_users** and **vivado_developers** should be added to ```/etc/sudoers.d```:
+
+```
+ALL ALL=NOPASSWD:$CLI_PATH/common/get_booking_system_servers_list,$CLI_PATH/program/vitis,$CLI_PATH/program/revert
+```
+*all_users group contents.*
+
+```
+vivado_developers ALL=(ALL) NOPASSWD:/sbin/reboot,/sbin/insmod,/sbin/rmmod,/sbin/iptables,$CLI_PATH/program/fpga_chmod,$CLI_PATH/program/pci_hot_plug,$CLI_PATH/program/vivado,$CLI_PATH/program/rescan,/usr/sbin/modprobe,$CLI_PATH/set/write
+```
+*vivado_developer group contents.*
+
+where ```$CLI_PATH``` represents SGRT CLI path, for example ```/opt/sgrt/cli```.
 
 ### Vivado configuration
 
 ## Limitations
-* SGRT has only been tested on Ubuntu 20.04.6 LTS.
+* SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
 * For deployment servers with reconfigurable devices, it's imperative to maintain a single version of the Xilinx toolset (comprising XRT, Vivado, and Vitis_HLS) on the system. Multiple versions of these tools should not coexist to ensure proper operation.
 * For deployment servers with GPUs, only one version of HIP/ROCm should be installed.
 
