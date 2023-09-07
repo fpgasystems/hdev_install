@@ -53,6 +53,7 @@ if [ -z "$mpich_path" ]; then
 fi
 
 #get my_drivers_path
+#eval "aux=\"\$MY_DRIVERS_PATH\""
 echo ""
 read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
@@ -63,6 +64,7 @@ if [ -z "$my_drivers_path" ]; then
 fi
 
 #get my_projects_path
+#eval "aux=\"\$MY_DRIVERS_PATH\""
 echo ""
 read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
 if [ -z "$my_projects_path" ]; then
@@ -123,7 +125,7 @@ echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 aux=$USER
 #sed -i 's/jmoyapaya/$USER/g' $RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH
 #sed -i "s/\\\$USER/$USER/g" "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
-sed -i "s/\$aux/$USER/g" "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+#sed -i "s/\$aux/$USER/g" "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
 
 
 
