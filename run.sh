@@ -42,7 +42,7 @@ echo "${bold}sgrt_install${normal}"
 
 #get sgrt_base_path
 echo ""
-echo -n "${bold}Please, enter the installation path (default: $SGRT_BASE_PATH):${normal}"
+echo -n "${bold}Please, enter the installation path (default: $SGRT_BASE_PATH):${normal} "
 while true; do
     read -p "" sgrt_base_path
     #assign to default if empty
