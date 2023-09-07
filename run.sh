@@ -50,7 +50,7 @@ while true; do
         sgrt_base_path=$SGRT_BASE_PATH
     fi
     #the installation destination should not exist
-    if ! [ -d "$sgrt_base_path" ]; then
+    if ! [ -d "$sgrt_base_path/sgrt" ]; then
         break
     fi
 done
