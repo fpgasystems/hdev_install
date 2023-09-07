@@ -9,7 +9,6 @@ RUN_PATH=$(dirname "$RUN_PATH")
 
 #default constants
 SGRT_INSTALL_PATH="/opt/sgrt"
-
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/$USER"
 MY_PROJECTS_PATH="/home/$USER/sgrt_projects"
@@ -47,7 +46,6 @@ done
 
 #get mpich_path
 echo ""
-#echo "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal}"
 read -p "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal} " mpich_path
 if [ -z "$mpich_path" ]; then
     mpich_path=$MPICH_PATH
@@ -70,6 +68,38 @@ if [ -z "$my_projects_path" ]; then
     echo $my_projects_path
 fi
 
+#get rocm_path
+echo ""
+read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
+if [ -z "$rocm_path" ]; then
+    rocm_path=$ROCM_PATH
+    echo $rocm_path
+fi
+
+#get xilinx_platforms_path
+echo ""
+read -p "${bold}Please, enter the value for XILINX_PLATFORMS_PATH (default: $XILINX_PLATFORMS_PATH):${normal} " xilinx_platforms_path
+if [ -z "$xilinx_platforms_path" ]; then
+    xilinx_platforms_path=$XILINX_PLATFORMS_PATH
+    echo $xilinx_platforms_path
+fi
+
+#get xilinx_tools_path
+echo ""
+read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
+if [ -z "$xilinx_tools_path" ]; then
+    xilinx_tools_path=$XILINX_TOOLS_PATH
+    echo $xilinx_tools_path
+fi
+
+#get xrt_path
+echo ""
+read -p "${bold}Please, enter the value for XRT_PATH (default: $XRT_PATH):${normal} " xrt_path
+if [ -z "$xrt_path" ]; then
+    xrt_path=$XRT_PATH
+    echo $xrt_path
+fi
+
 #checkout sgrt
 cd $RUN_PATH
 echo ""
@@ -79,6 +109,15 @@ git clone https://github.com/fpgasystems/sgrt.git
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
 echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
 echo -n "$my_projects_path" > "$RUN_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
+echo -n "$rocm_path" > "$RUN_PATH/sgrt/cli/constants/ROCM_PATH"
+echo -n "$VIVADO_DEVICES_MAX" > "$RUN_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
+echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
+echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
+echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
+
+
+
+
 
 
 #-----------------------------------------------------------------------------
