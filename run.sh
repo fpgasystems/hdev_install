@@ -173,9 +173,13 @@ echo $sgrt_base_path
 echo $cli_path
 echo $CLI_NAME
 
-#copy to sgrt_base_path
-#sudo mv $RUN_PATH/sgrt $sgrt_base_path
-sudo cp "$RUN_PATH/sgrt" "$sgrt_base_path/"
+#copy to sgrt_base_path ===================================> sudo mv ./sgrt /opt
+
+echo $RUN_PATH
+
+
+sudo mv $RUN_PATH/sgrt $sgrt_base_path
+#sudo cp "$RUN_PATH/sgrt" "$sgrt_base_path/"
 
 #adding to profile.d (system-wide $PATH)
 #sudo echo -n "PATH=$PATH:$cli_path" > /etc/profile.d/$CLI_NAME.sh
