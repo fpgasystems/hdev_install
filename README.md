@@ -90,10 +90,10 @@ In order to use the **Vivado workflow,** SGRT requires to install cable drivers 
 
 1. **Install cable drivers:** 
 ```
-cd ${XILINX_VIVADO/Vivado/vivado_version}/data/xicom/cable_drivers/lin64/install_script/install_drivers/
+cd $XILINX_VIVADO/data/xicom/cable_drivers/lin64/install_script/install_drivers/
 ./install_drivers
 ```
-where ```XILINX_VIVADO``` is an environment variable related to ```XILINX_TOOLS_PATH```.
+where ```$XILINX_VIVADO``` is an environment variable related to ```XILINX_TOOLS_PATH```.
 
 2. **Configure udev rules:** 
 ```
