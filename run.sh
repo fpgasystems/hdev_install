@@ -167,6 +167,7 @@ echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 
 #copy to sgrt_base_path
 sudo mv $RUN_PATH/sgrt $sgrt_base_path
+sudo chown -R root:root $sgrt_base_path/sgrt
 
 #adding to profile.d (system-wide $PATH)
 echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh" >/dev/null
