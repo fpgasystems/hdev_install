@@ -86,7 +86,7 @@ vivado_developers ALL=(ALL) NOPASSWD:/sbin/reboot,/sbin/insmod,/sbin/rmmod,/sbin
 where ```$CLI_PATH``` represents SGRT CLI path, for example ```/opt/sgrt/cli```.
 
 ### Vivado configuration
-In order to use the **Vivado workflow,** SGRT requires to install cable drivers for Xilinx boards and configure udev rules. Enter the following commands as root:
+In order to use the **Vivado workflow,** SGRT requires to **install cable drivers** for Xilinx boards and **configure udev rules.**
 
 1. **Install cable drivers:** 
 ```
@@ -99,7 +99,10 @@ where ```$XILINX_VIVADO``` is an environment variable related to ```XILINX_TOOLS
 ```
 sudo sed -i '/^ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Xilinx"/c ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Xilinx", MODE:="666", GROUP:="vivado_developers"' /etc/udev/rules.d/52-xilinx-ftdi-usb.rules
 ```
-where the **vivado_developers** group relates to the section above. 
+where the **vivado_developers** group relates to the section above.
+
+![Installing cable drivers and configuring udev rules.](./udev-rules.png "Installing cable drivers and configuring udev rules.")
+*Installing cable drivers and configuring udev rules.*
 
 ## Limitations
 * SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
