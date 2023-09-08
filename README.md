@@ -17,7 +17,7 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by follow
 * [Downloading the installer](#downloading-the-installer)
 * [Running the installer](#running-the-installer)
 * [Prerequisite software](#prerequisite-software)
-* [System configuration](#setting-up-xilinx-tools)
+* [System and Vivado configuration](#system-and-vivado-configuration)
 
 ## Downloading the installer
 ```
@@ -69,7 +69,7 @@ Besides the tools listed above, the following are also required to make SGRT ful
 * [GitHub CLI](https://cli.github.com)
 * [MPICH](https://www.mpich.org)
 
-## System configuration
+## System and Vivado configuration
 
 The user groups **all_users** and **vivado_developers** should be added to ```/etc/sudoers.d```:
 
