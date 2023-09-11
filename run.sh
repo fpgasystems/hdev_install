@@ -81,79 +81,61 @@ while true; do
     esac
 done
 
-#set CPU_SERVERS_LIST
+#set ACAP_SERVERS_LIST
 echo ""
-echo "${bold}Does $hostname have any accelerator device (ACAP, FPGA, GPU) mounted on it (y/n)?:${normal}" 
-cpu_server=""
+echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
+acap_server=""
 while true; do
     read -p "" yn
     case $yn in
         "y") 
+            acap_server=$hostname
             break
             ;;
         "n")
-            #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
-            cpu_server=$hostname
             break
             ;;
     esac
 done
 
-#deployment servers are not a cpu_server
-if [ "$cpu_server" = "" ]; then 
-    #set ACAP_SERVERS_LIST
-    echo ""
-    echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
-    acap_server=""
-    while true; do
-        read -p "" yn
-        case $yn in
-            "y") 
-                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
-                acap_server=$hostname
-                break
-                ;;
-            "n")
-                break
-                ;;
-        esac
-    done
+#set FPGA_SERVERS_LIST
+echo ""
+echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
+fpga_server=""
+while true; do
+    read -p "" yn
+    case $yn in
+        "y") 
+            fpga_server=$hostname
+            break
+            ;;
+        "n")
+            break
+            ;;
+    esac
+done
 
-    #set FPGA_SERVERS_LIST
-    echo ""
-    echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
-    fpga_server=""
-    while true; do
-        read -p "" yn
-        case $yn in
-            "y") 
-                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
-                fpga_server=$hostname
-                break
-                ;;
-            "n")
-                break
-                ;;
-        esac
-    done
+#set GPU_SERVERS_LIST
+echo ""
+echo "${bold}Does $hostname have any GPU mounted on it (y/n)?:${normal}" 
+gpu_server=""
+while true; do
+    read -p "" yn
+    case $yn in
+        "y") 
+            gpu_server=$hostname
+            break
+            ;;
+        "n")
+            break
+            ;;
+    esac
+done
 
-    #set GPU_SERVERS_LIST
-    echo ""
-    echo "${bold}Does $hostname have any GPU mounted on it (y/n)?:${normal}" 
-    gpu_server=""
-    while true; do
-        read -p "" yn
-        case $yn in
-            "y") 
-                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
-                gpu_server=$hostname
-                break
-                ;;
-            "n")
-                break
-                ;;
-        esac
-    done
+#set CPU_SERVERS_LIST (the server does not have any ACAP, FPGA, or GPU)
+cpu_server=""
+if [ "$acap_server" = "" ] && [ "$fpga_server" = "" ] && [ "$gpu_server" = "" ]; then
+    cpu_server=$hostname
 fi
 
 #get mpich_path
