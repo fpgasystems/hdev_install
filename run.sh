@@ -100,7 +100,7 @@ while true; do
 done
 
 #deployment servers are not a cpu_server
-if [ "$cpu_server" = "no" ]; then 
+if [ "$cpu_server" = "" ]; then 
     #set ACAP_SERVERS_LIST
     echo ""
     echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
