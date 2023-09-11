@@ -65,12 +65,14 @@ cli_path=$sgrt_base_path/sgrt/cli #$sgrt_base_path/cli
 
 #set VIRTUALIZED_SERVERS_LIST
 echo ""
-echo "${bold}Is $hostname a virtualized server (y/n)?:${normal}" 
+echo "${bold}Is $hostname a virtualized server (y/n)?:${normal}"
+virtualized_server=""
 while true; do
     read -p "" yn
     case $yn in
         "y")
-            echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST" 
+            #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST" 
+            virtualized_server=$hostname
             break
             ;;
         "n")
@@ -82,7 +84,7 @@ done
 #set CPU_SERVERS_LIST
 echo ""
 echo "${bold}Does $hostname have any accelerator device (ACAP, FPGA, GPU) mounted on it (y/n)?:${normal}" 
-cpu_server="no"
+cpu_server=""
 while true; do
     read -p "" yn
     case $yn in
@@ -90,8 +92,8 @@ while true; do
             break
             ;;
         "n")
-            echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
-            cpu_server="yes"
+            #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
+            cpu_server=$hostname
             break
             ;;
     esac
@@ -102,13 +104,13 @@ if [ "$cpu_server" = "no" ]; then
     #set ACAP_SERVERS_LIST
     echo ""
     echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
-    acap_server="no"
+    acap_server=""
     while true; do
         read -p "" yn
         case $yn in
             "y") 
-                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
-                acap_server="yes"
+                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
+                acap_server=$hostname
                 break
                 ;;
             "n")
@@ -120,13 +122,13 @@ if [ "$cpu_server" = "no" ]; then
     #set FPGA_SERVERS_LIST
     echo ""
     echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
-    fpga_server="no"
+    fpga_server=""
     while true; do
         read -p "" yn
         case $yn in
             "y") 
-                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
-                fpga_server="yes"
+                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
+                fpga_server=$hostname
                 break
                 ;;
             "n")
@@ -138,13 +140,13 @@ if [ "$cpu_server" = "no" ]; then
     #set GPU_SERVERS_LIST
     echo ""
     echo "${bold}Does $hostname have any GPU mounted on it (y/n)?:${normal}" 
-    gpu_server="no"
+    gpu_server=""
     while true; do
         read -p "" yn
         case $yn in
             "y") 
-                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
-                gpu_server="yes"
+                #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
+                gpu_server=$hostname
                 break
                 ;;
             "n")
@@ -258,7 +260,14 @@ chmod_x $RUN_PATH/sgrt/cli/run
 chmod_x $RUN_PATH/sgrt/cli/set
 chmod_x $RUN_PATH/sgrt/cli/validate
 
-#fill up files
+#fill up server lists
+echo -n "$virtualized_server" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST"
+echo -n "$cpu_server" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
+echo -n "$acap_server" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
+echo -n "$fpga_server" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
+echo -n "$gpu_server" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
+
+#fill up paths
 echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
 echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
 echo -n "$my_projects_path" > "$RUN_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
