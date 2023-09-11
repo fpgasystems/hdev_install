@@ -182,7 +182,7 @@ fi
 
 #get rocm_path
 rocm_path=""
-if [ "$gpu_server" = "yes" ]; then
+if [ "$gpu_server" = "$hostname" ]; then
     echo ""
     read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
     if [ -z "$rocm_path" ]; then
