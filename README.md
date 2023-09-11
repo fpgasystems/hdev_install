@@ -18,6 +18,8 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by follow
 * [Running the installer](#running-the-installer)
 * [Prerequisite software](#prerequisite-software)
 * [System and Vivado configuration](#system-and-vivado-configuration)
+* [Generating device configuration files](#generating-device-configuration-files)
+* [Enabling SGRT on a cluster]
 
 ## Downloading the installer
 ```
@@ -28,14 +30,7 @@ git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 ./sgrt_install/run.sh
 ```
-
-During the installation process, the installer will prompt you to define a set of parameters. The following information is intended to assist you in making the correct selections:
-
-### Server prompts
-
-* Is this a build server? Answer ```yes``` if your server does not have any accelerator (ACAP, FPGA, GPU) and is intended to be a server to build applications for reconfigurable devices. 
-
-### Paths prompts
+During the installation process, the installer will ask server-related and tool path questions. The following information is intended to assist you in making the correct **path selections:**
 
 * **MPICH_PATH:** This parameter designates the path to a valid MPICH installation, with the default setting located at ```/opt/mpich```.
 * **MY_DRIVERS_PATH:** This parameter specifies a directory where the user (```$USER```) should possess the necessary permissions to employ the ```rmmod``` and ```insmod``` system calls. By default, this path is configured as ```/local/home/$USER```.
@@ -103,6 +98,8 @@ where the **vivado_developers** group relates to the section above.
 
 ![Installing cable drivers and configuring udev rules.](./udev-rules.png "Installing cable drivers and configuring udev rules.")
 *Installing cable drivers and configuring udev rules.*
+
+## Generating device configuration files
 
 ## Limitations
 * SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
