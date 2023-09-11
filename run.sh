@@ -195,7 +195,7 @@ fi
 xilinx_platforms_path=""
 xilinx_tools_path=""
 xrt_path=""
-if [ "$acap_server" = "yes" ] || [ "$fpga_server" = "yes" ]; then
+if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     echo ""
     read -p "${bold}Please, enter the value for XILINX_PLATFORMS_PATH (default: $XILINX_PLATFORMS_PATH):${normal} " xilinx_platforms_path
     if [ -z "$xilinx_platforms_path" ]; then
