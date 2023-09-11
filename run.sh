@@ -37,6 +37,10 @@ if ! sudo -n true 2>/dev/null; then
     exit 1
 fi
 
+#get hostname
+url="${HOSTNAME}"
+hostname="${url%%.*}"
+
 echo ""
 echo "${bold}sgrt_install${normal}"
 
@@ -58,6 +62,97 @@ done
 
 #derive cli_path
 cli_path=$sgrt_base_path/sgrt/cli #$sgrt_base_path/cli
+
+#set VIRTUALIZED_SERVERS_LIST
+echo ""
+echo "${bold}Is $hostname a virtualized server (y/n)?:${normal}" 
+while true; do
+    read -p "" yn
+    case $yn in
+        "y")
+            echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST" 
+            break
+            ;;
+        "n")
+            break
+            ;;
+    esac
+done
+
+#set CPU_SERVERS_LIST
+echo ""
+echo "${bold}Does $hostname have any accelerator device (ACAP, FPGA, GPU) mounted on it (y/n)?:${normal}" 
+cpu_server="no"
+while true; do
+    read -p "" yn
+    case $yn in
+        "y") 
+            break
+            ;;
+        "n")
+            echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
+            cpu_server="yes"
+            break
+            ;;
+    esac
+done
+
+#deployment servers are not a cpu_server
+if [ "$cpu_server" = "no" ]; then 
+    #set ACAP_SERVERS_LIST
+    echo ""
+    echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
+    acap_server="no"
+    while true; do
+        read -p "" yn
+        case $yn in
+            "y") 
+                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
+                acap_server="yes"
+                break
+                ;;
+            "n")
+                break
+                ;;
+        esac
+    done
+
+    #set FPGA_SERVERS_LIST
+    echo ""
+    echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
+    fpga_server="no"
+    while true; do
+        read -p "" yn
+        case $yn in
+            "y") 
+                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
+                fpga_server="yes"
+                break
+                ;;
+            "n")
+                break
+                ;;
+        esac
+    done
+
+    #set GPU_SERVERS_LIST
+    echo ""
+    echo "${bold}Does $hostname have any GPU mounted on it (y/n)?:${normal}" 
+    gpu_server="no"
+    while true; do
+        read -p "" yn
+        case $yn in
+            "y") 
+                echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
+                gpu_server="yes"
+                break
+                ;;
+            "n")
+                break
+                ;;
+        esac
+    done
+fi
 
 #get mpich_path
 echo ""
@@ -84,35 +179,43 @@ if [ -z "$my_projects_path" ]; then
 fi
 
 #get rocm_path
-echo ""
-read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
-if [ -z "$rocm_path" ]; then
-    rocm_path=$ROCM_PATH
-    echo $rocm_path
+rocm_path=""
+if [ "$gpu_server" = "yes" ]; then
+    echo ""
+    read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
+    if [ -z "$rocm_path" ]; then
+        rocm_path=$ROCM_PATH
+        echo $rocm_path
+    fi
 fi
 
 #get xilinx_platforms_path
-echo ""
-read -p "${bold}Please, enter the value for XILINX_PLATFORMS_PATH (default: $XILINX_PLATFORMS_PATH):${normal} " xilinx_platforms_path
-if [ -z "$xilinx_platforms_path" ]; then
-    xilinx_platforms_path=$XILINX_PLATFORMS_PATH
-    echo $xilinx_platforms_path
-fi
+xilinx_platforms_path=""
+xilinx_tools_path=""
+xrt_path=""
+if [ "$acap_server" = "yes" ] || [ "$fpga_server" = "yes" ]; then
+    echo ""
+    read -p "${bold}Please, enter the value for XILINX_PLATFORMS_PATH (default: $XILINX_PLATFORMS_PATH):${normal} " xilinx_platforms_path
+    if [ -z "$xilinx_platforms_path" ]; then
+        xilinx_platforms_path=$XILINX_PLATFORMS_PATH
+        echo $xilinx_platforms_path
+    fi
 
-#get xilinx_tools_path
-echo ""
-read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
-if [ -z "$xilinx_tools_path" ]; then
-    xilinx_tools_path=$XILINX_TOOLS_PATH
-    echo $xilinx_tools_path
-fi
+    #get xilinx_tools_path
+    echo ""
+    read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
+    if [ -z "$xilinx_tools_path" ]; then
+        xilinx_tools_path=$XILINX_TOOLS_PATH
+        echo $xilinx_tools_path
+    fi
 
-#get xrt_path
-echo ""
-read -p "${bold}Please, enter the value for XRT_PATH (default: $XRT_PATH):${normal} " xrt_path
-if [ -z "$xrt_path" ]; then
-    xrt_path=$XRT_PATH
-    echo $xrt_path
+    #get xrt_path
+    echo ""
+    read -p "${bold}Please, enter the value for XRT_PATH (default: $XRT_PATH):${normal} " xrt_path
+    if [ -z "$xrt_path" ]; then
+        xrt_path=$XRT_PATH
+        echo $xrt_path
+    fi
 fi
 
 #checkout sgrt
