@@ -19,7 +19,7 @@ To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by follow
 * [Prerequisite software](#prerequisite-software)
 * [System and Vivado configuration](#system-and-vivado-configuration)
 * [Generating device configuration files](#generating-device-configuration-files)
-* [Enabling SGRT on a cluster]
+* [Enabling Systems Group RunTime on a cluster](#enabling-systems-group-runtime-on-a-cluster)
 
 ## Downloading the installer
 ```
@@ -140,6 +140,18 @@ As before, there is one row per GPU, and the columns represent the following inf
 4. **GPU ID:** Obtain the *GPU ID* using the ```rocm-smi -i``` command.
 5. **Serial Number:** Find the *serial number* using the ```rocm-smi --showserial``` command.
 6. **Unique ID:** Retrieve the *unique ID* using the ```rocm-smi --showuniqueid``` command.
+
+## Enabling Systems Group RunTime on a cluster
+Under the following assumptions, SGRT can program bitstreams on remote reconfigurable devices, including ACAPs and FPGAs located on other servers within the same IP network:
+
+1. SGRT is successfully installed on all the servers you wish to include in your managed cluster.
+2. You have the necessary SSH access permissions to interact with the remote servers.
+3. All target servers have replicated copies of the five SERVER_LIST files, which are located in the ```$CLI_PATH/constants``` directory.
+
+To illustrate, here's an example of a real cluster utilizing SGRT:
+
+![From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.](./SERVER_LISTS.png "From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.")
+*From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.*
 
 ## Limitations
 * SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
