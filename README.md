@@ -123,8 +123,8 @@ There is one row per reconfigurable device, and the columns represent the follow
 9. **MAC Addresses:** Retrieve the *MAC addresses* corresponding to the IP addresses above for the device of interest using the ```xbutil examine``` command.
 10. **Platform:** Determine the platform of the device of interest using the ```xbutil examine``` command.
 
-![Getting root port and device name.](./root-port-device-name.png "Getting root port and device name.")
-*Getting root port and device name.*
+![Getting root port (step 3) and device name (step 6).](./root-port-device-name.png "Getting root port (step 3) and device name (step 6).")
+*Getting root port (step 3) and device name (step 6).*
 
 ### devices_gpu
 A **devices_gpu** configuration file is located in ```$CLI_PATH/devices_gpu``` and looks like this:
