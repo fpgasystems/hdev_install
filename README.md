@@ -117,7 +117,7 @@ There is one row per reconfigurable device, and the columns represent the follow
 3. **Root Port:** Find the root port related to the upstream port using: ```sudo lspci -t``` (e.g., ```a1:00.0``` corresponds to ```a0:03.1```).
 4. **LnkCtl:** Discover *LnkCtl* capabilities related to the root port using: ```sudo lspci -vvv -s``` (e.g., ```sudo lspci -vvv -s a0:03.1``` corresponds to ```58```).
 5. **Device Type:** Select between "acap" or "fpga" based on the Platform’s XSA Name revealed by the ```xbutil examine``` command.
-6. **Device Name:** The device name can be found in the Vivado GUI when you open the hardware target of interest.
+6. **Device Name:** The device name can be found in the Vivado GUI when you open the hardware target of interest, e.g., ```xcu280_u55c_0```.
 7. **Serial Number:** Obtain the *serial number* of the device of interest using the ```sudo xbmgmt examine``` command.
 8. **IP Addresses:** Assign two IP addresses (one for each QSFP interface, separated by a slash) according to your IP configuration plan.
 9. **MAC Addresses:** Retrieve the *MAC addresses* corresponding to the IP addresses above for the device of interest using the ```xbutil examine``` command.
