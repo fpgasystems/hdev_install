@@ -116,6 +116,7 @@ There is one row per reconfigurable device, and the columns represent the follow
 2. **Upstream Port:** Use ```lspci | grep Xilinx | grep '\.0 '``` to identify Xilinx reconfigurable devices *upstream ports* (i.e., ```a1:00.0```).
 3. **Root Port:** Use ```sudo lspci -t``` to identify the *root port* related to the *upstream port* (i.e., ```a1:00.0``` relates to ```a0:03.1```).
 4. **LnkCtl:** Use ```sudo lspci -vvv -s a0:03.1``` to identify the *LnkCtl* capabilities related to the *root port* (i.e., ```58```).
+5. **Device Type:** Choose between "acap" or "fpga" according to Platform’s XSA Name revealed by the ```xbutil examine``` command.
 
 ### devices_gpu
 A **devices_gpu** configuration file is located in ```$CLI_PATH/devices_gpu``` and looks like this:
