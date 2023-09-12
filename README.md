@@ -142,7 +142,7 @@ As before, there is one row per GPU, and the columns represent the following inf
 6. **Unique ID:** Retrieve the *unique ID* using the ```rocm-smi --showuniqueid``` command.
 
 ## Enabling Systems Group RunTime on a cluster
-Under the following assumptions, SGRT can program bitstreams on remote reconfigurable devices, including ACAPs and FPGAs located on other servers within the same IP network:
+Under the following assumptions, SGRT can program bitstreams on remote servers’ ACAPs and FPGAs:
 
 1. SGRT is successfully installed on all the servers you wish to include in your managed cluster.
 2. You have the necessary SSH access permissions to interact with the remote servers.
