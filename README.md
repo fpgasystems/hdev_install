@@ -145,10 +145,9 @@ As before, there is one row per GPU, and the columns represent the following inf
 Under the following assumptions, SGRT can program bitstreams on remote servers’ ACAPs and FPGAs:
 
 1. SGRT is successfully installed on all the servers you wish to include in your managed cluster.
-2. You have the necessary SSH access permissions to interact with the remote servers.
-3. All target servers have replicated copies of the five SERVER_LIST files, which are located in the ```$CLI_PATH/constants``` directory.
-
-To illustrate, here's an example of a real cluster utilizing SGRT:
+2. The remote servers are on the same IP network.
+3. You have the necessary SSH access permissions to interact with the remote servers.
+4. All target servers have replicated copies of the five SERVER_LIST files, which are located in the ```$CLI_PATH/constants``` directory. To illustrate, here's an example of a real cluster utilizing SGRT:
 
 ![The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster..](./SERVER_LISTS.png "The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster..")
 *The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster.*
