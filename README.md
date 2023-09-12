@@ -102,16 +102,16 @@ where the **vivado_developers** group relates to the section above.
 
 ## Generating device configuration files
 
-An essential SGRT component are the device configuration files. Each server running SGRT requires two unique files: one for ACAPs and FPGAs (```$CLI_PATH/devices_acap_fpga```) and another for GPUs (```$CLI_PATH/devices_gpu```). These files are assumed to be correct, and what follows helps you generate them accurately.
+An essential SGRT component are the device configuration files. Each server running SGRT requires two unique files: one for ACAPs and FPGAs and another for GPUs. These files are assumed to be correct, and what follows helps you generate them accurately.
 
 ### devices_acap_fpga
-A **devices_acap_fpga** configuration file looks like this:
+A **devices_acap_fpga** configuration file is located in ```$CLI_PATH/devices_acap_fpga``` and looks like this:
 
 ![devices_acap_fpga.](./devices_acap_fpga.png "devices_acap_fpga.")
 *devices_acap_fpga.*
 
 ### devices_gpu
-A **devices_gpu** configuration file looks like this:
+A **devices_gpu** configuration file is located in ```$CLI_PATH/devices_gpu``` and looks like this:
 
 ![devices_acap_fpga.](./devices_gpu.png "devices_gpu.")
 *devices_gpu.*
