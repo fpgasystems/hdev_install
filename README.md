@@ -150,8 +150,8 @@ Under the following assumptions, SGRT can program bitstreams on remote reconfigu
 
 To illustrate, here's an example of a real cluster utilizing SGRT:
 
-![From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.](./SERVER_LISTS.png "From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.")
-*From left to rigth: ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, VIRTUALIZED_SERVER_LIST.*
+![The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster..](./SERVER_LISTS.png "The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster..")
+*The files ACAP_SERVER_LIST, CPU_SERVER_LIST, FPGA_SERVER_LIST, GPU_SERVER_LIST, and VIRTUALIZED_SERVER_LIST are replicated on all servers in the cluster.*
 
 ## Limitations
 * SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
