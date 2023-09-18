@@ -12,7 +12,7 @@
   Systems Group RunTime Installation
 </h1> 
 
-To install [SGRT](https://github.com/fpgasystems/sgrt), please proceed by following these steps:
+To install [SGRT,](https://github.com/fpgasystems/sgrt) please proceed by following these steps:
 
 * [Downloading the installer](#downloading-the-installer)
 * [Running the installer](#running-the-installer)
