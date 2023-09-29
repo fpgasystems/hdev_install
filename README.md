@@ -16,7 +16,7 @@ To install [SGRT,](https://github.com/fpgasystems/sgrt) please proceed by follow
 
 * [Downloading the installer](#downloading-the-installer)
 * [Running the installer](#running-the-installer)
-* [Prerequisite software](#prerequisite-software)
+* [Installing prerequisite software](#installing-prerequisite-software)
 * [System and Vivado configuration](#system-and-vivado-configuration)
 * [Generating device configuration files](#generating-device-configuration-files)
 * [Enabling Systems Group RunTime on a cluster](#enabling-systems-group-runtime-on-a-cluster)
@@ -42,7 +42,7 @@ During the installation process, the installer will ask server-related and tool 
 
 Please note that you have the flexibility to utilize any other environment variable distinct from ```$USER``` to define your paths.
 
-## Prerequisite software 
+## Installing prerequisite software
 
 To ensure proper functionality, the following tools must be present on the server for SGRT to run:
 
