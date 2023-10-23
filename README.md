@@ -30,9 +30,9 @@ git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 ./sgrt_install/run.sh
 ```
-During the installation process, the installer will ask server-related and tool path questions. The following information is intended to assist you in making the correct **path selections:**
 
-* First of all, you need to provide a **non-existing** path where you want to install SGRT. For example, designating ```/opt``` will install SGRT in ```/opt/sgrt```.
+Thw first thing you need to do after running the installer is to provide a **non-existing path where you want to install SGRT.** For example, designating ```/opt``` will install SGRT in ```/opt/sgrt```. After that, the installer will cotinue asking server-related and tool path questions. The following information is intended to assist you in making the correct **path selections:**
+
 * **MPICH_PATH:** This parameter designates the path to a valid MPICH installation, with the default setting located at ```/opt/mpich```.
 * **MY_DRIVERS_PATH:** This parameter specifies a directory where the user (```$USER```) should possess the necessary permissions to employ the ```rmmod``` and ```insmod``` system calls. By default, this path is configured as ```/local/home/$USER```.
 * **MY_PROJECTS_PATH:** This parameter designates a directory where the user (```$USER```) must have the required privileges to conduct read, write, and application execution operations. The default setting is ```/home/$USER/sgrt_projects```, where ```/home/$USER``` typically corresponds to an NFS hard drive accessible from all servers within a cluster.
