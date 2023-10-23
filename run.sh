@@ -259,6 +259,14 @@ echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORM
 echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
 
+#creating directories
+if [ ! -d "$my_drivers_path" ]; then
+    mkdir -p "$my_drivers_path"
+fi
+if [ ! -d "$my_projects_path" ]; then
+    mkdir -p "$my_projects_path"
+fi
+
 #copy to sgrt_base_path
 sudo mv $RUN_PATH/sgrt $sgrt_base_path
 sudo chown -R root:root $sgrt_base_path/sgrt
