@@ -82,7 +82,7 @@ vivado_developers ALL=(ALL) NOPASSWD:/sbin/reboot,/sbin/insmod,/sbin/rmmod,/sbin
 ```
 *vivado_developer group contents.*
 
-where ```$CLI_PATH``` represents SGRT CLI path, for example ```/opt/sgrt/cli```.
+where ```$CLI_PATH``` represents SGRT CLI path, for example ```/opt/sgrt/cli``` and **must be declared as environmental varible.**
 
 ### Vivado configuration
 In order to use the **Vivado workflow,** SGRT requires to **install cable drivers** for Xilinx boards and **configure udev rules.**
