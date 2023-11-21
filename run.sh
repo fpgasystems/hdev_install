@@ -56,6 +56,10 @@ while true; do
     fi
     #the installation destination should not exist
     if ! [ -d "$sgrt_base_path/sgrt" ]; then
+        echo ""
+        echo "Please, enter a non-existing installation path"
+        echo ""
+    else
         echo $sgrt_base_path/sgrt
         break
     fi
@@ -195,11 +199,16 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     fi
 
     #get xilinxd_license_file
+    echo ""
     echo -n "${bold}Please, enter the value for XILINXD_LICENSE_FILE (example: $XILINXD_LICENSE_FILE):${normal} "
     while true; do
         read -p "" xilinxd_license_file
         #check if not empty
-        if ! [ -z "$xilinxd_license_file" ]; then
+        if [ -z "$xilinxd_license_file" ]; then
+            echo ""
+            echo "Please, enter a valid value for XILINXD_LICENSE_FILE"
+            echo ""
+        else
             # Validate format
             if [[ "$xilinxd_license_file" =~ ^[[:digit:]]+@[[:alnum:].-]+(:[[:digit:]]+@[[:alnum:].-]+)?$ ]]; then
                 # Valid format
