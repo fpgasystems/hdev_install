@@ -61,7 +61,7 @@ while true; do
         #echo ""
     else
         echo ""
-        echo $sgrt_base_path/sgrt
+        echo "SGRT will be installed in ${bold}$sgrt_base_path/sgrt${normal}"
         break
     fi
 done
@@ -213,8 +213,8 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
             # Validate format
             if [[ "$xilinxd_license_file" =~ ^[[:digit:]]+@[[:alnum:].-]+(:[[:digit:]]+@[[:alnum:].-]+)?$ ]]; then
                 # Valid format
-                echo ""
-                echo $xilinxd_license_file
+                #echo ""
+                #echo $xilinxd_license_file
                 break
             else
                 echo ""
