@@ -41,6 +41,7 @@ After that, the installer will cotinue asking server-related and tool path quest
 * **ROCM_PATH:** This field specifies the path to a valid ROCm installation, with the default location set at ```/opt/rocm```.
 * **XILINX_PLATFORMS_PATH:** This parameter designates the path to the Xilinx platforms installed on the server. The default value is configured as ```/opt/xilinx/platforms```.
 * **XILINX_TOOLS_PATH:** This field specifies the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is established as ```/tools/Xilinx/```.
+* **XILINXD_LICENSE_FILE:** A list of verified license servers for Xilinx tools.
 * **XRT_PATH:** This parameter designates the path to a valid Xilinx RunTime installation, with the default setting positioned at ```/opt/xilinx/xrt```.
 
 Please note that you have the flexibility to utilize any other environment variable distinct from ```$USER``` to define your paths.
