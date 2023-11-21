@@ -27,7 +27,7 @@ ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
 XILINX_TOOLS_PATH="/tools/Xilinx"
-XILINXD_LICENSE_FILE="2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch"
+XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz.ch" # 2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch
 XRT_PATH="/opt/xilinx/xrt"
 
 #check if the user has sudo capabilities
@@ -232,10 +232,6 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     fi
 fi
 
-echo "Hasta aquí llegó la nieve!"
-echo $xilinxd_license_file
-exit
-
 #checkout sgrt
 cd $RUN_PATH
 echo ""
@@ -292,6 +288,16 @@ echo -n "$VIVADO_DEVICES_MAX" > "$RUN_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX
 echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
 echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
+
+#create XILINXD_LICENSE_FILE
+IFS=':' read -ra licenses <<< "$xilinxd_license_file"
+for license in "${licenses[@]}"; do
+    echo "$license" >> "$RUN_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
+done
+
+echo "Hasta aquí llegó la nieve!"
+echo $xilinxd_license_file
+exit
 
 #creating directories
 if [ ! -d "$my_drivers_path" ]; then
