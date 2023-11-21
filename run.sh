@@ -27,6 +27,7 @@ ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
 XILINX_TOOLS_PATH="/tools/Xilinx"
+XILINXD_LICENSE_FILE="2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch"
 XRT_PATH="/opt/xilinx/xrt"
 
 #check if the user has sudo capabilities
@@ -193,6 +194,20 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
         echo $xilinx_tools_path
     fi
 
+    #get xilinxd_license_file
+    echo -n "${bold}Please, enter the value for XILINXD_LICENSE_FILE (example: $XILINXD_LICENSE_FILE):${normal} "
+    while true; do
+        read -p "" xilinxd_license_file
+        #check if not empty
+        if ! [ -z "$xilinxd_license_file" ]; then
+            # Validate format
+            if [[ "$xilinxd_license_file" =~ ^[[:digit:]]+@[[:alnum:].-]+(:[[:digit:]]+@[[:alnum:].-]+)?$ ]]; then
+                # Valid format
+                break
+            fi
+        fi
+    done
+
     #get xrt_path
     echo ""
     read -p "${bold}Please, enter the value for XRT_PATH (default: $XRT_PATH):${normal} " xrt_path
@@ -201,6 +216,10 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
         echo $xrt_path
     fi
 fi
+
+echo "Hasta aquí llegó la nieve!"
+echo $xilinxd_license_file
+exit
 
 #checkout sgrt
 cd $RUN_PATH
