@@ -216,6 +216,9 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
                 echo ""
                 echo $xilinxd_license_file
                 break
+            else
+                echo ""
+                echo "Please, enter a valid value for XILINXD_LICENSE_FILE" 
             fi
         fi
     done
