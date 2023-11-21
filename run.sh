@@ -55,7 +55,7 @@ while true; do
         sgrt_base_path=$SGRT_BASE_PATH
     fi
     #the installation destination should not exist
-    if ! [ -d "$sgrt_base_path/sgrt" ]; then
+    if [ -d "$sgrt_base_path/sgrt" ]; then
         echo ""
         echo "Please, enter a non-existing installation path"
         echo ""
