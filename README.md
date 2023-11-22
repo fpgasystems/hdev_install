@@ -27,6 +27,13 @@ git clone https://github.com/fpgasystems/sgrt_install.git
 ```
 
 ## Running the installer
+Before running the installer, please ensure the following **prerrequisites:**
+
+* The user executing the installer possesses sudo capabilities.
+* Confirm the existence of the ```/tmp``` folder on the targeted server, and ensure that both ```$USER``` and root have write permissions on it.
+
+Once these prerequisites are confirmed, proceed with the installation:
+
 ```
 ./sgrt_install/run.sh
 ```
