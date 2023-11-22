@@ -253,14 +253,18 @@ fi
 
 #echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
 
-exit
+#exit
 #echo "RUN_PATH is $RUN_PATH"
 
 #checkout sgrt
-cd $RUN_PATH
+#cd $RUN_PATH
 #cd $SGRT_INSTALL_TMP_PATH
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git
+git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH
+
+echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
+
+exit
 
 #sgrt cleanup
 rm $RUN_PATH/sgrt/*.md
