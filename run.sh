@@ -236,20 +236,20 @@ fi
 
 #create as sudo
 
-SGRT_INSTALL_TMP_PATH=$RUN_PATH/sgrt_install_tmp
+#SGRT_INSTALL_TMP_PATH=$RUN_PATH/sgrt_install_tmp
 
-echo $SGRT_INSTALL_TMP_PATH
+#echo $SGRT_INSTALL_TMP_PATH
 
-exit
+#exit
 
-if [ ! -d "$SGRT_INSTALL_TMP_PATH" ]; then
-    mkdir -p "$SGRT_INSTALL_TMP_PATH"
-else
-    echo ""
-    echo "The directory ${bold}SGRT_INSTALL_TMP_PATH${normal} is already existing. Please, remove it and try again!"
-    echo ""
-    exit
-fi
+#if [ ! -d "$SGRT_INSTALL_TMP_PATH" ]; then
+#    mkdir -p "$SGRT_INSTALL_TMP_PATH"
+#else
+#    echo ""
+#    echo "The directory ${bold}SGRT_INSTALL_TMP_PATH${normal} is already existing. Please, remove it and try again!"
+#    echo ""
+#    exit
+#fi
 
 #echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
 
@@ -257,10 +257,10 @@ fi
 #echo "RUN_PATH is $RUN_PATH"
 
 #checkout sgrt
-#cd $RUN_PATH
-cd $SGRT_INSTALL_TMP_PATH
+cd $RUN_PATH
+#cd $SGRT_INSTALL_TMP_PATH
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH
+git clone https://github.com/fpgasystems/sgrt.git $RUN_PATH
 
 echo "Jelou!"
 exit
