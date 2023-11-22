@@ -18,6 +18,8 @@ CLI_NAME="sgutil"
 RUN_PATH="$(readlink -f "$0")"
 RUN_PATH=$(dirname "$RUN_PATH")
 
+TMP_PATH="/tmp"
+
 #default constants
 SGRT_BASE_PATH="/opt" #/opt/sgrt
 MPICH_PATH="/opt/mpich"
@@ -231,6 +233,23 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
         echo $xrt_path
     fi
 fi
+
+#create as sudo
+
+INSTALL_TMP_PATH=$TMP_PATH/sgrt_install
+
+if [ ! -d "$INSTALL_TMP_PATH" ]; then
+    mkdir -p "$INSTALL_TMP_PATH"
+else
+    echo ""
+    echo "The directory INSTALL_TMP_PATH=$INSTALL_TMP_PATH is already existing. Please, remove it and try again!"
+    echo ""
+    exit
+fi
+
+echo "INSTALL_TMP_PATH is $INSTALL_TMP_PATH"
+
+exit
 
 echo "RUN_PATH is $RUN_PATH"
 
