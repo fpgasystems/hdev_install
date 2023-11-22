@@ -347,3 +347,11 @@ echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh" 
 #copying sgutil_completion
 sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
+
+#remove folder
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt
+
+#print
+echo ""
+echo "$CLI_NAME was installed in $SGRT_INSTALL_TMP_PATH/sgrt"
+echo ""
