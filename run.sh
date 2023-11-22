@@ -320,9 +320,9 @@ for license in "${licenses[@]}"; do
     echo "$license" >> "$RUN_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
 done
 
-echo "Hasta aquí llegó la nieve!"
+#echo "Hasta aquí llegó la nieve!"
 #echo $xilinxd_license_file
-exit
+#exit
 
 #creating directories
 if [ ! -d "$my_drivers_path" ]; then
