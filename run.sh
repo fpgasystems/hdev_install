@@ -13,11 +13,6 @@ chmod_x() {
 
 #constants
 CLI_NAME="sgutil"
-
-#get RUN_PATH
-RUN_PATH="$(readlink -f "$0")"
-RUN_PATH=$(dirname "$RUN_PATH")
-
 TMP_PATH="/tmp"
 
 #default constants
@@ -209,13 +204,10 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
         if [ -z "$xilinxd_license_file" ]; then
             echo ""
             echo "Please, enter a valid value for XILINXD_LICENSE_FILE"
-            #echo ""
         else
             # Validate format
             if [[ "$xilinxd_license_file" =~ ^[[:digit:]]+@[[:alnum:].-]+(:[[:digit:]]+@[[:alnum:].-]+)?$ ]]; then
                 # Valid format
-                #echo ""
-                #echo $xilinxd_license_file
                 break
             else
                 echo ""
@@ -233,13 +225,8 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     fi
 fi
 
-#create as sudo
-
+#define temporal installation path
 SGRT_INSTALL_TMP_PATH=$TMP_PATH/sgrt_install
-
-#echo $SGRT_INSTALL_TMP_PATH
-
-#exit
 
 if [ ! -d "$SGRT_INSTALL_TMP_PATH" ]; then
     mkdir -p "$SGRT_INSTALL_TMP_PATH"
@@ -250,20 +237,9 @@ else
     exit
 fi
 
-#echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
-
-#exit
-#echo "RUN_PATH is $RUN_PATH"
-
 #checkout sgrt
-#cd $RUN_PATH
-#cd $SGRT_INSTALL_TMP_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH/sgrt
-
-#echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
-
-#exit
 
 #sgrt cleanup
 rm $SGRT_INSTALL_TMP_PATH/sgrt/*.md
@@ -285,8 +261,6 @@ rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/api/manual
 #sgrt/cli docs
 rm $SGRT_INSTALL_TMP_PATH/sgrt/cli/*.md
 rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/cli/manual
-#sgrt/cli completion
-#rm $RUN_PATH/sgrt/cli/$CLI_NAME_completion.sh
 
 #manage scripts
 chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli
@@ -323,20 +297,6 @@ for license in "${licenses[@]}"; do
     echo "$license" >> "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
 done
 
-#echo "Hasta aquí llegó la nieve!"
-#echo $xilinxd_license_file
-#exit
-
-#creating directories
-#if [ ! -d "$my_drivers_path" ]; then
-#    mkdir -p "$my_drivers_path"
-#fi
-#if [ ! -d "$my_projects_path" ]; then
-#    mkdir -p "$my_projects_path"
-#fi
-
-#exit
-
 #copy to sgrt_base_path
 sudo mv $SGRT_INSTALL_TMP_PATH/sgrt $sgrt_base_path
 sudo chown -R root:root $sgrt_base_path/sgrt
@@ -353,5 +313,5 @@ rm -rf $SGRT_INSTALL_TMP_PATH/sgrt
 
 #print
 echo ""
-echo "$CLI_NAME was installed in $SGRT_INSTALL_TMP_PATH/sgrt"
+echo "${bold}$CLI_NAME was installed in $sgrt_base_path/sgrt!${normal}"
 echo ""
