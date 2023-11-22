@@ -325,12 +325,20 @@ done
 #exit
 
 #creating directories
-if [ ! -d "$my_drivers_path" ]; then
-    mkdir -p "$my_drivers_path"
-fi
-if [ ! -d "$my_projects_path" ]; then
-    mkdir -p "$my_projects_path"
-fi
+#if [ ! -d "$my_drivers_path" ]; then
+#    mkdir -p "$my_drivers_path"
+#fi
+#if [ ! -d "$my_projects_path" ]; then
+#    mkdir -p "$my_projects_path"
+#fi
+
+echo "my_drivers_path is $my_drivers_path"
+echo "my_projects_path is $my_projects_path"
+
+echo "RUN_PATH/sgrt is $RUN_PATH/sgrt"
+echo "sgrt_base_path is $sgrt_base_path"
+
+exit
 
 #copy to sgrt_base_path
 sudo mv $RUN_PATH/sgrt $sgrt_base_path
