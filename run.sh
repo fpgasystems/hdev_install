@@ -242,7 +242,7 @@ if [ ! -d "$INSTALL_TMP_PATH" ]; then
     mkdir -p "$INSTALL_TMP_PATH"
 else
     echo ""
-    echo "The directory INSTALL_TMP_PATH=$INSTALL_TMP_PATH is already existing. Please, remove it and try again!"
+    echo "The directory ${bold}INSTALL_TMP_PATH=$INSTALL_TMP_PATH${normal} is already existing. Please, remove it and try again!"
     echo ""
     exit
 fi
