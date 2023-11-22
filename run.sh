@@ -236,7 +236,7 @@ fi
 
 #create as sudo
 
-INSTALL_TMP_PATH=$TMP_PATH/sgrt_install
+INSTALL_TMP_PATH=$RUN_PATH/sgrt_install
 
 if [ ! -d "$INSTALL_TMP_PATH" ]; then
     mkdir -p "$INSTALL_TMP_PATH"
@@ -253,10 +253,10 @@ fi
 #echo "RUN_PATH is $RUN_PATH"
 
 #checkout sgrt
-cd $RUN_PATH
-#cd $INSTALL_TMP_PATH
+#cd $RUN_PATH
+cd $INSTALL_TMP_PATH
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git $RUN_PATH
+git clone https://github.com/fpgasystems/sgrt.git $INSTALL_TMP_PATH
 
 echo "Jelou!"
 exit
