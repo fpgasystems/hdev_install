@@ -237,6 +237,10 @@ cd $RUN_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
+
+echo "Jelou!"
+exit
+
 #sgrt cleanup
 rm $RUN_PATH/sgrt/*.md
 rm $RUN_PATH/sgrt/*.png
