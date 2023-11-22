@@ -247,14 +247,15 @@ else
     exit
 fi
 
-echo "INSTALL_TMP_PATH is $INSTALL_TMP_PATH"
+#echo "INSTALL_TMP_PATH is $INSTALL_TMP_PATH"
 
-exit
-
-echo "RUN_PATH is $RUN_PATH"
+#exit
+#echo "RUN_PATH is $RUN_PATH"
 
 #checkout sgrt
 cd $RUN_PATH
+
+cd $INSTALL_TMP_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git
 
