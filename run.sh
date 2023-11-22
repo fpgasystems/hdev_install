@@ -335,7 +335,7 @@ done
 #    mkdir -p "$my_projects_path"
 #fi
 
-exit
+#exit
 
 #copy to sgrt_base_path
 sudo mv $SGRT_INSTALL_TMP_PATH/sgrt $sgrt_base_path
