@@ -238,6 +238,10 @@ fi
 
 SGRT_INSTALL_TMP_PATH=$RUN_PATH/sgrt_install_tmp
 
+echo $SGRT_INSTALL_TMP_PATH
+
+exit
+
 if [ ! -d "$SGRT_INSTALL_TMP_PATH" ]; then
     mkdir -p "$SGRT_INSTALL_TMP_PATH"
 else
