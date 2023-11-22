@@ -257,7 +257,7 @@ cd $RUN_PATH
 
 cd $INSTALL_TMP_PATH
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git
+git clone https://github.com/fpgasystems/sgrt.git $INSTALL_TMP_PATH
 
 echo "Jelou!"
 exit
