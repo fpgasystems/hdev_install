@@ -79,7 +79,6 @@ while true; do
     read -p "" yn
     case $yn in
         "y")
-            #echo -n "$hostname" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST" 
             virtualized_server=$hostname
             break
             ;;
@@ -262,66 +261,66 @@ fi
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH/sgrt
 
-echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
+#echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
 
-exit
+#exit
 
 #sgrt cleanup
-rm $RUN_PATH/sgrt/*.md
-rm $RUN_PATH/sgrt/*.png
-rm $RUN_PATH/sgrt/LICENSE
+rm $SGRT_INSTALL_TMP_PATH/sgrt/*.md
+rm $SGRT_INSTALL_TMP_PATH/sgrt/*.png
+rm $SGRT_INSTALL_TMP_PATH/sgrt/LICENSE
 #docs
-rm -rf $RUN_PATH/sgrt/docs
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/docs
 #examples
-rm -rf $RUN_PATH/sgrt/examples
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/examples
 #playbooks
-rm -rf $RUN_PATH/sgrt/playbooks
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/playbooks
 #trash
-if [ -d "$RUN_PATH/sgrt/trash" ]; then
-    rm -rf $RUN_PATH/sgrt/trash
+if [ -d "$SGRT_INSTALL_TMP_PATH/sgrt/trash" ]; then
+    rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/trash
 fi
 #sgrt/api docs
-rm $RUN_PATH/sgrt/api/*.md
-rm -rf $RUN_PATH/sgrt/api/manual
+rm $SGRT_INSTALL_TMP_PATH/sgrt/api/*.md
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/api/manual
 #sgrt/cli docs
-rm $RUN_PATH/sgrt/cli/*.md
-rm -rf $RUN_PATH/sgrt/cli/manual
+rm $SGRT_INSTALL_TMP_PATH/sgrt/cli/*.md
+rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/cli/manual
 #sgrt/cli completion
 #rm $RUN_PATH/sgrt/cli/$CLI_NAME_completion.sh
 
 #manage scripts
-chmod_x $RUN_PATH/sgrt/cli
-chmod_x $RUN_PATH/sgrt/cli/build
-chmod_x $RUN_PATH/sgrt/cli/common
-chmod_x $RUN_PATH/sgrt/cli/enable
-chmod_x $RUN_PATH/sgrt/cli/get
-chmod_x $RUN_PATH/sgrt/cli/new
-chmod_x $RUN_PATH/sgrt/cli/program
-chmod_x $RUN_PATH/sgrt/cli/run
-chmod_x $RUN_PATH/sgrt/cli/set
-chmod_x $RUN_PATH/sgrt/cli/validate
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/build
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/common
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/enable
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/get
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/new
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/program
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/run
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/set
+chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/validate
 
 #fill up server lists
-echo -n "$virtualized_server" > "$RUN_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST"
-echo -n "$cpu_server" > "$RUN_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
-echo -n "$acap_server" > "$RUN_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
-echo -n "$fpga_server" > "$RUN_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
-echo -n "$gpu_server" > "$RUN_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
+echo -n "$virtualized_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST"
+echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
+echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
+echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
+echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
 
 #fill up paths
-echo -n "$mpich_path" > "$RUN_PATH/sgrt/cli/constants/MPICH_PATH"
-echo -n "$my_drivers_path" > "$RUN_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
-echo -n "$my_projects_path" > "$RUN_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
-echo -n "$rocm_path" > "$RUN_PATH/sgrt/cli/constants/ROCM_PATH"
-echo -n "$VIVADO_DEVICES_MAX" > "$RUN_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
-echo -n "$xilinx_platforms_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
-echo -n "$xilinx_tools_path" > "$RUN_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
-echo -n "$xrt_path" > "$RUN_PATH/sgrt/cli/constants/XRT_PATH"
+echo -n "$mpich_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MPICH_PATH"
+echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
+echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
+echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/ROCM_PATH"
+echo -n "$VIVADO_DEVICES_MAX" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
+echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
+echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
+echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XRT_PATH"
 
 #create XILINXD_LICENSE_FILE
 IFS=':' read -ra licenses <<< "$xilinxd_license_file"
 for license in "${licenses[@]}"; do
-    echo "$license" >> "$RUN_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
+    echo "$license" >> "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
 done
 
 #echo "Hasta aquí llegó la nieve!"
@@ -336,16 +335,10 @@ done
 #    mkdir -p "$my_projects_path"
 #fi
 
-echo "my_drivers_path is $my_drivers_path"
-echo "my_projects_path is $my_projects_path"
-
-echo "RUN_PATH/sgrt is $RUN_PATH/sgrt"
-echo "sgrt_base_path is $sgrt_base_path"
-
 exit
 
 #copy to sgrt_base_path
-sudo mv $RUN_PATH/sgrt $sgrt_base_path
+sudo mv $SGRT_INSTALL_TMP_PATH/sgrt $sgrt_base_path
 sudo chown -R root:root $sgrt_base_path/sgrt
 
 #adding to profile.d (system-wide $PATH)
