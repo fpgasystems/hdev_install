@@ -236,7 +236,7 @@ fi
 
 #create as sudo
 
-SGRT_INSTALL_TMP_PATH=$TMP_PATH/sgrt_install_tmp
+SGRT_INSTALL_TMP_PATH=$TMP_PATH/sgrt_install
 
 #echo $SGRT_INSTALL_TMP_PATH
 
