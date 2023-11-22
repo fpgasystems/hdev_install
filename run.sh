@@ -260,7 +260,7 @@ fi
 #cd $RUN_PATH
 #cd $SGRT_INSTALL_TMP_PATH
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH
+git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH/sgrt
 
 echo "SGRT_INSTALL_TMP_PATH is $SGRT_INSTALL_TMP_PATH"
 
