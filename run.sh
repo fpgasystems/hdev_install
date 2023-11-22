@@ -232,11 +232,12 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     fi
 fi
 
+echo "RUN_PATH is $RUN_PATH"
+
 #checkout sgrt
 cd $RUN_PATH
 echo ""
 git clone https://github.com/fpgasystems/sgrt.git
-
 
 echo "Jelou!"
 exit
