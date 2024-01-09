@@ -1,6 +1,6 @@
 <!-- <div id="readme" class="Box-body readme blob js-code-block-container">
 <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"> -->
-<p align="right">
+<!-- <p align="right">
 <a href="https://github.com/fpgasystems">fpgasystems</a> <a href="https://github.com/fpgasystems/hacc">HACC</a> <a href="https://github.com/fpgasystems/sgrt">SGRT</a>
 </p>
 
@@ -10,7 +10,9 @@
 
 <h1 align="center">
   Systems Group RunTime Installation
-</h1> 
+</h1> --> 
+
+# Installation
 
 To install [SGRT,](https://github.com/fpgasystems/sgrt) please proceed by following these steps:
 
