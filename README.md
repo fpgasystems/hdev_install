@@ -167,12 +167,12 @@ Under the following assumptions, SGRT can program bitstreams on remote serversâ€
 
 For larger clusters with a significant amount of servers, consider using infrastrcture automation platforms for [System and Vivado configuration](#system-and-vivado-configuration) and [Generating device configuration files](#generating-device-configuration-files). As mentioned in [Operating the cluster](https://github.com/fpgasystems/hacc/blob/main/docs/operating-the-cluster.md#operating-the-cluster), ETHZ-HACC is using Ansible.
 
-## Limitations
+# Limitations
 * SGRT has only been tested on **Ubuntu 20.04.6 LTS.**
 * For deployment servers with reconfigurable devices, it's imperative to maintain a single version of the Xilinx toolset (comprising XRT, Vivado, and Vitis_HLS) on the system. Multiple versions of these tools should not coexist to ensure proper operation.
 * For deployment servers with GPUs, only one version of HIP/ROCm should be installed.
 
-# License
+<!-- # License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -194,4 +194,4 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE. -->
