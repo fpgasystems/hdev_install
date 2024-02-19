@@ -22,6 +22,7 @@ To install [SGRT,](https://github.com/fpgasystems/sgrt) please proceed by follow
 * [Installing prerequisite software](#installing-prerequisite-software)
 * [System and Vivado configuration](#system-and-vivado-configuration)
 * [Generating device configuration files](#generating-device-configuration-files)
+* [Generating device information files](#generating-device-information-files)
 * [Enabling Systems Group RunTime on a cluster](#enabling-systems-group-runtime-on-a-cluster)
 
 ## Downloading the installer
@@ -159,8 +160,8 @@ As before, there is one row per GPU, and the columns represent the following inf
 
 Alongside the device configuration files, each server running SGRT requires the ```$CLI_PATH/platforminfo``` file, which contains pertinent details about clock speed, available resources, and memory. The Xilinx tool ```platforminfo``` can assist in obtaining the appropriate values for these files.
 
-![platforminfo for alveo-u250-01, alveo-u280-01, and hacc-box-01.](./platforminfo.png "platforminfo for alveo-u250-01, alveo-u280-01, and hacc-box-01.")
-*platforminfo for alveo-u250-01, alveo-u280-01, and hacc-box-01.*
+![platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.](./platforminfo.png "platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.")
+*platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.*
 
 ## Enabling Systems Group RunTime on a cluster
 Under the following assumptions, SGRT can program bitstreams on remote servers’ ACAPs and FPGAs:
