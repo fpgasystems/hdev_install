@@ -330,7 +330,7 @@ sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #remove folder
-rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME
+sudo rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME
 
 #print
 echo ""
