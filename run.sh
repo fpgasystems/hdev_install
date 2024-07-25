@@ -1,5 +1,6 @@
 #!/bin/bash
 
+CLI_NAME="sgutil"
 bold=$(tput bold)
 normal=$(tput sgr0)
 
@@ -12,15 +13,12 @@ chmod_x() {
 }
 
 #constants
-CLI_NAME="sgutil"
-TMP_PATH="/tmp"
-
-#default constants
 BASE_PATH="/opt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
 REPO_NAME="sgrt"
 ROCM_PATH="/opt/rocm"
+TMP_PATH="/tmp"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
 XILINX_TOOLS_PATH="/tools/Xilinx"
@@ -28,7 +26,9 @@ XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz
 XRT_PATH="/opt/xilinx/xrt"
 
 #derived
+MAIN_BRANCH_URL="https://api.github.com/repos/fpgasystems/$REPO_NAME/commits/main"
 MY_PROJECTS_PATH="/home/\$USER/${REPO_NAME}_projects"
+REPO_URL="https://github.com/fpgasystems/$REPO_NAME.git"
 
 #check if the user has sudo capabilities
 if ! sudo -n true 2>/dev/null; then
@@ -242,7 +242,14 @@ fi
 
 #checkout sgrt
 echo ""
-git clone https://github.com/fpgasystems/$REPO_NAME.git $SGRT_INSTALL_TMP_PATH/$REPO_NAME
+git clone $REPO_URL $SGRT_INSTALL_TMP_PATH/$REPO_NAME
+
+#get last commit date on the remote
+remote_commit_date=$(curl -s $MAIN_BRANCH_URL | jq -r '.commit.committer.date')
+
+#get commit ID
+cd $SGRT_INSTALL_TMP_PATH/$REPO_NAME
+remote_commit_id=$(git rev-parse --short HEAD)
 
 #sgrt cleanup
 rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/*.md
@@ -269,7 +276,11 @@ rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/overleaf*
 #hacc-validation
 rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/hacc-validation
 
-#move install
+#update COMMIT and COMMIT_DATE
+echo $remote_commit_id > $SGRT_INSTALL_TMP_PATH/$REPO_NAME/COMMIT
+echo $remote_commit_date > $SGRT_INSTALL_TMP_PATH/$REPO_NAME/COMMIT_DATE
+
+#move update
 sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update.sh $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update
 
 #manage scripts
