@@ -66,8 +66,10 @@ while true; do
     fi
 done
 
-#derive cli_path
+#derive paths
+api_path=$base_path/$REPO_NAME/api
 cli_path=$base_path/$REPO_NAME/cli
+templates_path=$base_path/$REPO_NAME/templates
 
 #set VIRTUALIZED_SERVERS_LIST
 echo ""
@@ -323,7 +325,16 @@ sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME $base_path
 sudo chown -R root:root $base_path/$REPO_NAME
 
 #adding to profile.d (system-wide $PATH)
-echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh" >/dev/null
+echo "PATH=\$PATH:$cli_path" | sudo tee /etc/profile.d/$CLI_NAME.sh > /dev/null
+
+#copying sgutil_completion
+sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
+sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
+
+#export API, CLI, and TEMPLATES_PATH
+echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc
+echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc
+echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc
 
 #copying sgutil_completion
 sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
