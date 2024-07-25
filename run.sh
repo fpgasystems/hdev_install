@@ -265,12 +265,12 @@ rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/api/manual
 rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/*.md
 rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/manual
 #overleaf
-rm -rf overleaf*
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/overleaf*
 #hacc-validation
-rm -rf hacc-validation
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/hacc-validation
 
 #move install
-sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update.sh $SGRT_PATH/update
+sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update.sh $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update
 
 #manage scripts
 chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli
