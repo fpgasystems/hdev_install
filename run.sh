@@ -336,10 +336,6 @@ echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc
 echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc
 echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc
 
-#copying sgutil_completion
-sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
-sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
-
 #remove folder
 sudo rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME
 
