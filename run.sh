@@ -16,10 +16,10 @@ CLI_NAME="sgutil"
 TMP_PATH="/tmp"
 
 #default constants
-SGRT_BASE_PATH="/opt" #/opt/sgrt
+$BASE_PATH="/opt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
-MY_PROJECTS_PATH="/home/\$USER/sgrt_projects"
+REPO_NAME="sgrt"
 ROCM_PATH="/opt/rocm"
 VIVADO_DEVICES_MAX="1"
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
@@ -27,10 +27,13 @@ XILINX_TOOLS_PATH="/tools/Xilinx"
 XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz.ch" # 2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch
 XRT_PATH="/opt/xilinx/xrt"
 
+#derived
+MY_PROJECTS_PATH="/home/\$USER/${REPO_NAME}_projects"
+
 #check if the user has sudo capabilities
 if ! sudo -n true 2>/dev/null; then
     echo ""
-    echo "The installation process requires sudo capabilities."
+    echo "Sorry, this command requires sudo capabilities."
     echo ""
     exit 1
 fi
@@ -40,31 +43,31 @@ url="${HOSTNAME}"
 hostname="${url%%.*}"
 
 echo ""
-echo "${bold}sgrt_install${normal}"
+echo "${bold}${REPO_NAME}_install${normal}"
 
-#get sgrt_base_path
+#get base_path
 echo ""
-echo -n "${bold}Please, enter a non-existing installation path (default: $SGRT_BASE_PATH):${normal} "
+echo -n "${bold}Please, enter a non-existing installation path (default: $BASE_PATH):${normal} "
 while true; do
-    read -p "" sgrt_base_path
+    read -p "" base_path
     #assign to default if empty
-    if [ -z "$sgrt_base_path" ]; then
-        sgrt_base_path=$SGRT_BASE_PATH
+    if [ -z "$base_path" ]; then
+        base_path=$BASE_PATH
     fi
     #the installation destination should not exist
-    if [ -d "$sgrt_base_path/sgrt" ]; then
+    if [ -d "$base_path/$REPO_NAME" ]; then
         echo ""
         echo "Please, enter a non-existing installation path"
         #echo ""
     else
         echo ""
-        echo "SGRT will be installed in ${bold}$sgrt_base_path/sgrt${normal}"
+        echo "SGRT will be installed in ${bold}$base_path/$REPO_NAME${normal}"
         break
     fi
 done
 
 #derive cli_path
-cli_path=$sgrt_base_path/sgrt/cli #$sgrt_base_path/cli
+cli_path=$base_path/$REPO_NAME/cli
 
 #set VIRTUALIZED_SERVERS_LIST
 echo ""
@@ -239,67 +242,74 @@ fi
 
 #checkout sgrt
 echo ""
-git clone https://github.com/fpgasystems/sgrt.git $SGRT_INSTALL_TMP_PATH/sgrt
+git clone https://github.com/fpgasystems/$REPO_NAME.git $SGRT_INSTALL_TMP_PATH/$REPO_NAME
 
 #sgrt cleanup
-rm $SGRT_INSTALL_TMP_PATH/sgrt/*.md
-rm $SGRT_INSTALL_TMP_PATH/sgrt/*.png
-rm $SGRT_INSTALL_TMP_PATH/sgrt/LICENSE
+rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/*.md
+rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/*.png
+rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/LICENSE
 #docs
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/docs
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/docs
 #examples
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/examples
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/examples
 #playbooks
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/playbooks
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/playbooks
 #trash
-if [ -d "$SGRT_INSTALL_TMP_PATH/sgrt/trash" ]; then
-    rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/trash
+if [ -d "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/trash" ]; then
+    rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/trash
 fi
 #sgrt/api docs
-rm $SGRT_INSTALL_TMP_PATH/sgrt/api/*.md
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/api/manual
+rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/api/*.md
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/api/manual
 #sgrt/cli docs
-rm $SGRT_INSTALL_TMP_PATH/sgrt/cli/*.md
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt/cli/manual
+rm $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/*.md
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/manual
+#overleaf
+rm -rf overleaf*
+#hacc-validation
+rm -rf hacc-validation
+
+#move install
+sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/update.sh $SGRT_PATH/update
 
 #manage scripts
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/build
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/common
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/enable
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/get
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/new
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/program
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/run
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/set
-chmod_x $SGRT_INSTALL_TMP_PATH/sgrt/cli/validate
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/build
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/common
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/enable
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/get
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/new
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/program
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/run
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/set
+chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/validate
 
 #fill up server lists
-echo -n "$virtualized_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/VIRTUALIZED_SERVERS_LIST"
-echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/CPU_SERVERS_LIST"
-echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/ACAP_SERVERS_LIST"
-echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/FPGA_SERVERS_LIST"
-echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/GPU_SERVERS_LIST"
+echo -n "$virtualized_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/VIRTUALIZED_SERVERS_LIST"
+echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/CPU_SERVERS_LIST"
+echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ACAP_SERVERS_LIST"
+echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_SERVERS_LIST"
+echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GPU_SERVERS_LIST"
 
 #fill up paths
-echo -n "$mpich_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MPICH_PATH"
-echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MY_DRIVERS_PATH"
-echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/MY_PROJECTS_PATH"
-echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/ROCM_PATH"
-echo -n "$VIVADO_DEVICES_MAX" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
-echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINX_PLATFORMS_PATH"
-echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINX_TOOLS_PATH"
-echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XRT_PATH"
+echo -n "$mpich_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MPICH_PATH"
+echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_DRIVERS_PATH"
+echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_PROJECTS_PATH"
+echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ROCM_PATH"
+echo -n "$VIVADO_DEVICES_MAX" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
+echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_PLATFORMS_PATH"
+echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_TOOLS_PATH"
+echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XRT_PATH"
 
 #create XILINXD_LICENSE_FILE
 IFS=':' read -ra licenses <<< "$xilinxd_license_file"
 for license in "${licenses[@]}"; do
-    echo "$license" >> "$SGRT_INSTALL_TMP_PATH/sgrt/cli/constants/XILINXD_LICENSE_FILE"
+    echo "$license" >> "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINXD_LICENSE_FILE"
 done
 
-#copy to sgrt_base_path
-sudo mv $SGRT_INSTALL_TMP_PATH/sgrt $sgrt_base_path
-sudo chown -R root:root $sgrt_base_path/sgrt
+#copy to base_path
+sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME $base_path
+sudo chown -R root:root $base_path/$REPO_NAME
 
 #adding to profile.d (system-wide $PATH)
 echo "export PATH=\"$PATH:$cli_path\"" | sudo tee /etc/profile.d/"$CLI_NAME.sh" >/dev/null
@@ -309,9 +319,9 @@ sudo mv $cli_path/$CLI_NAME"_completion" /usr/share/bash-completion/completions/
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #remove folder
-rm -rf $SGRT_INSTALL_TMP_PATH/sgrt
+rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME
 
 #print
 echo ""
-echo "${bold}$CLI_NAME was installed in $sgrt_base_path/sgrt!${normal}"
+echo "${bold}$CLI_NAME was installed in $base_path/$REPO_NAME!${normal}"
 echo ""
