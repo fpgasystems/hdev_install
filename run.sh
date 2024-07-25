@@ -16,7 +16,7 @@ CLI_NAME="sgutil"
 TMP_PATH="/tmp"
 
 #default constants
-$BASE_PATH="/opt"
+BASE_PATH="/opt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
 REPO_NAME="sgrt"
