@@ -16,6 +16,7 @@ chmod_x() {
 BASE_PATH="/opt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
+PACKAGES=("jq" "gh" "xrt")
 REPO_NAME="sgrt"
 ROCM_PATH="/opt/rocm"
 TMP_PATH="/tmp"
@@ -44,6 +45,16 @@ hostname="${url%%.*}"
 
 echo ""
 echo "${bold}${REPO_NAME}_install${normal}"
+
+#check on packages
+for package in "${PACKAGES[@]}"; then
+    if ! which "$package" > /dev/null 2>&1; then
+        echo ""
+        echo "Please, install a calid $package version."
+        echo ""
+        exit 1
+    fi
+done
 
 #get base_path
 echo ""
@@ -343,5 +354,5 @@ sudo rm -rf $SGRT_INSTALL_TMP_PATH
 
 #print
 echo ""
-echo "${bold}$CLI_NAME was installed in $base_path/$REPO_NAME!${normal}"
+echo "$REPO_NAME was installed in ${bold}$base_path (commit ID: $remote_commit_id)!${normal}"
 echo ""
