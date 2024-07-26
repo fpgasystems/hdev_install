@@ -332,12 +332,14 @@ sudo mv $base_path/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-complet
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #export API, CLI, and TEMPLATES_PATH
-echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc
-echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc
-echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc
+if ! grep -qF "export CLI_PATH=${api_path}" /etc/bash.bashrc; then
+    echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
+    echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
+    echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
+fi
 
 #remove folder
-sudo rm -rf $SGRT_INSTALL_TMP_PATH/$REPO_NAME
+sudo rm -rf $SGRT_INSTALL_TMP_PATH/${REPO_NAME}_install
 
 #print
 echo ""
