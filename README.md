@@ -74,11 +74,12 @@ Finally, as a vital requirement, all the Xilinx accelerator cards mounted on the
 For servers equipped with GPUs, a valid HIP/ROCm release must be present in the designated ```ROCM_PATH``` directory.
 
 ### Other tools
-Besides the tools listed above, the following are also required to make SGRT fully operative:
+Besides the tools listed above, the following are also required to make SGRT fully operative: <!-- This should match the PACKAGES vector in run.sh -->
 
-* [GitHub CLI](https://cli.github.com)
-* iperf
-* [MPICH](https://www.mpich.org)
+* [GitHub CLI (gh)](https://cli.github.com) 
+* jq
+<!-- * iperf
+* [MPICH](https://www.mpich.org) -->
 
 ## System and Vivado configuration
 
