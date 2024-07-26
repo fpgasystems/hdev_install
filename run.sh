@@ -16,7 +16,7 @@ chmod_x() {
 BASE_PATH="/opt"
 MPICH_PATH="/opt/mpich"
 MY_DRIVERS_PATH="/local/home/\$USER"
-PACKAGES=("jq" "gh" "xrt")
+PACKAGES=("jq" "gh")
 REPO_NAME="sgrt"
 ROCM_PATH="/opt/rocm"
 TMP_PATH="/tmp"
