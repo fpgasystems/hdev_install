@@ -39,7 +39,7 @@ Before running the installer, please ensure the following **prerrequisites:**
 Once these prerequisites are confirmed, proceed with the installation:
 
 ```
-./sgrt_install/run.sh
+sudo ./sgrt_install/run.sh
 ```
 
 The first thing you need to do after running the installer is to provide a **non-existing path where you want to install SGRT.** For example, designating ```/opt``` will install SGRT in ```/opt/sgrt```. 
