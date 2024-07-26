@@ -339,7 +339,7 @@ if ! grep -qF "export CLI_PATH=${api_path}" /etc/bash.bashrc; then
 fi
 
 #remove folder
-sudo rm -rf $SGRT_INSTALL_TMP_PATH/${REPO_NAME}_install
+sudo rm -rf $SGRT_INSTALL_TMP_PATH
 
 #print
 echo ""
