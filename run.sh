@@ -47,11 +47,11 @@ echo ""
 echo "${bold}${REPO_NAME}_install${normal}"
 
 #check on packages
-for package in "${PACKAGES[@]}"; then
+for package in "${PACKAGES[@]}"; do
     if ! which "$package" > /dev/null 2>&1; then
-        echo ""
-        echo "Please, install a calid $package version."
-        echo ""
+        echo  ""
+        echo "Please, install a valid $package version."
+        echo  ""
         exit 1
     fi
 done
