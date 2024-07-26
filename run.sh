@@ -328,7 +328,7 @@ sudo chown -R root:root $base_path/$REPO_NAME
 echo "PATH=\$PATH:$cli_path" | sudo tee /etc/profile.d/$CLI_NAME.sh > /dev/null
 
 #copying sgutil_completion
-sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
+sudo mv $base_path/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #export API, CLI, and TEMPLATES_PATH
