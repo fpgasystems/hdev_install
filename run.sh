@@ -14,7 +14,7 @@ chmod_x() {
 
 #installation constants
 BASE_PATH="/opt"                                                                        #   dialog
-PACKAGES=("jq" "gh")
+PACKAGES=("curl" "jq" "gh")
 REPO_NAME="sgrt"
 TMP_PATH="/tmp"
 
@@ -377,7 +377,7 @@ sudo mv $base_path/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-complet
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #export API, CLI, and TEMPLATES_PATH
-if ! grep -qF "export CLI_PATH=${api_path}" /etc/bash.bashrc; then
+if ! grep -qF "export CLI_PATH=${cli_path}" /etc/bash.bashrc; then
     echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
     echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
     echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
