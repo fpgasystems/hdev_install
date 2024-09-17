@@ -12,34 +12,34 @@ chmod_x() {
     done
 }
 
-#general constants
-BASE_PATH="/opt"
+#installation constants
+BASE_PATH="/opt"                                                                        #   dialog
 PACKAGES=("jq" "gh")
 REPO_NAME="sgrt"
 TMP_PATH="/tmp"
 
-#constants (there are 21 at 17.09.2024)
-#ACAP_SERVERS_LIST
-#CPU_SERVERS_LIST
-#FPGA_SERVERS_LIST
-#GITHUB_CLI_PATH
-#GPU_SERVERS_LIST
-#LOCAL_PATH
-MY_DRIVERS_PATH="/local/home/\$USER"
-#MY_PROJECTS_PATH
-#ONIC_DRIVER_COMMIT
-#ONIC_DRIVER_NAME
-#ONIC_DRIVER_REPO
-#ONIC_SHELL_COMMIT
-#ONIC_SHELL_NAME
-#ONIC_SHELL_REPO
-ROCM_PATH="/opt/rocm"
-#UPDATES_PATH
-#VIRTUALIZED_SERVERS_LIST
-XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
-XILINX_TOOLS_PATH="/tools/Xilinx"
-XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz.ch" # 2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch
-XRT_PATH="/opt/xilinx/xrt"
+#constants (there are 21 as of 17.09.2024)
+#ACAP_SERVERS_LIST                                                                      #1  dialog 2
+#CPU_SERVERS_LIST                                                                       #2
+#FPGA_SERVERS_LIST                                                                      #3  dialog 3
+GITHUB_CLI_PATH="/usr/bin"                                                              #4  dialog 10
+#GPU_SERVERS_LIST                                                                       #5  dialog 4
+LOCAL_PATH="/local/home/\$USER"                                                         #6  dialog 5
+MY_DRIVERS_PATH="/tmp/devices_acap_fpga_drivers"                                        #7  dialog 6
+MY_PROJECTS_PATH="/home/\$USER/my_projects"                                             #8  dialog 7
+ONIC_DRIVER_COMMIT="1cf2578"                                                            #9
+ONIC_DRIVER_NAME="onic.ko"                                                              #10
+ONIC_DRIVER_REPO="Xilinx/open-nic-driver"                                               #11
+ONIC_SHELL_COMMIT="8077751"                                                             #12
+ONIC_SHELL_NAME="open_nic_shell.bit"                                                    #13
+ONIC_SHELL_REPO="Xilinx/open-nic-shell"                                                 #14
+ROCM_PATH="/opt/rocm"                                                                   #15 dialog 9
+UPDATES_PATH="/tmp"                                                                     #16 dialog 11
+#VIRTUALIZED_SERVERS_LIST                                                               #17 dialog 1
+XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"                                           #18 dialog 8.1
+XILINX_TOOLS_PATH="/tools/Xilinx"                                                       #19 dialog 8.2
+XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz.ch"    #20 dialog 8.3
+XRT_PATH="/opt/xilinx/xrt"                                                              #21 dialog 8.4
 
 #derived
 MAIN_BRANCH_URL="https://api.github.com/repos/fpgasystems/$REPO_NAME/commits/main"
@@ -97,7 +97,7 @@ api_path=$base_path/$REPO_NAME/api
 cli_path=$base_path/$REPO_NAME/cli
 templates_path=$base_path/$REPO_NAME/templates
 
-#set VIRTUALIZED_SERVERS_LIST
+#set VIRTUALIZED_SERVERS_LIST - dialog 1
 echo ""
 echo "${bold}Is $hostname a virtualized server (y/n)?:${normal}"
 virtualized_server=""
@@ -114,7 +114,7 @@ while true; do
     esac
 done
 
-#set ACAP_SERVERS_LIST
+#set ACAP_SERVERS_LIST - dialog 2 
 echo ""
 echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
 acap_server=""
@@ -131,7 +131,7 @@ while true; do
     esac
 done
 
-#set FPGA_SERVERS_LIST
+#set FPGA_SERVERS_LIST - dialog 3
 echo ""
 echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
 fpga_server=""
@@ -148,7 +148,7 @@ while true; do
     esac
 done
 
-#set GPU_SERVERS_LIST
+#set GPU_SERVERS_LIST - dialog 4
 echo ""
 echo "${bold}Does $hostname have any GPU mounted on it (y/n)?:${normal}" 
 gpu_server=""
@@ -171,7 +171,15 @@ if [ "$acap_server" = "" ] && [ "$fpga_server" = "" ] && [ "$gpu_server" = "" ];
     cpu_server=$hostname
 fi
 
-#get my_drivers_path
+#get local_path - dialog 5
+echo ""
+read -p "${bold}Please, enter the value for LOCAL_PATH (default: $LOCAL_PATH):${normal} " local_path
+if [ -z "$local_path" ]; then
+    local_path=$LOCAL_PATH
+    echo $local_path
+fi
+
+#get my_drivers_path - dialog 6
 echo ""
 read -p "${bold}Please, enter the value for MY_DRIVERS_PATH (default: $MY_DRIVERS_PATH):${normal} " my_drivers_path
 if [ -z "$my_drivers_path" ]; then
@@ -179,7 +187,7 @@ if [ -z "$my_drivers_path" ]; then
     echo $my_drivers_path
 fi
 
-#get my_projects_path
+#get my_projects_path - dialog 7
 echo ""
 read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
 if [ -z "$my_projects_path" ]; then
@@ -187,18 +195,7 @@ if [ -z "$my_projects_path" ]; then
     echo $my_projects_path
 fi
 
-#get rocm_path
-rocm_path=""
-if [ "$gpu_server" = "$hostname" ]; then
-    echo ""
-    read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
-    if [ -z "$rocm_path" ]; then
-        rocm_path=$ROCM_PATH
-        echo $rocm_path
-    fi
-fi
-
-#get xilinx_platforms_path
+#get xilinx_platforms_path - dialog 8
 xilinx_platforms_path=""
 xilinx_tools_path=""
 xrt_path=""
@@ -246,6 +243,33 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
         xrt_path=$XRT_PATH
         echo $xrt_path
     fi
+fi
+
+#get rocm_path - dialog 9
+rocm_path=""
+if [ "$gpu_server" = "$hostname" ]; then
+    echo ""
+    read -p "${bold}Please, enter the value for ROCM_PATH (default: $ROCM_PATH):${normal} " rocm_path
+    if [ -z "$rocm_path" ]; then
+        rocm_path=$ROCM_PATH
+        echo $rocm_path
+    fi
+fi
+
+#get github_cli_path - dialog 10
+echo ""
+read -p "${bold}Please, enter the value for GITHUB_CLI_PATH (default: $GITHUB_CLI_PATH):${normal} " github_cli_path
+if [ -z "$github_cli_path" ]; then
+    github_cli_path=$GITHUB_CLI_PATH
+    echo $github_cli_path
+fi
+
+#get updates_path - dialog 11
+echo ""
+read -p "${bold}Please, enter the value for UPDATES_PATH (default: $UPDATES_PATH):${normal} " updates_path
+if [ -z "$updates_path" ]; then
+    updates_path=$UPDATES_PATH
+    echo $updates_path
 fi
 
 #define temporal installation path
@@ -315,26 +339,31 @@ chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/run
 chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/set
 chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/validate
 
-#fill up server lists
-echo -n "$virtualized_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/VIRTUALIZED_SERVERS_LIST"
-echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/CPU_SERVERS_LIST"
-echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ACAP_SERVERS_LIST"
-echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_SERVERS_LIST"
-echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GPU_SERVERS_LIST"
-
-#fill up paths
-echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_DRIVERS_PATH"
-echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_PROJECTS_PATH"
-echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ROCM_PATH"
-echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_PLATFORMS_PATH"
-echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_TOOLS_PATH"
-echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XRT_PATH"
-
-#create XILINXD_LICENSE_FILE
-IFS=':' read -ra licenses <<< "$xilinxd_license_file"
+#constants
+echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ACAP_SERVERS_LIST"                #1
+echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/CPU_SERVERS_LIST"                  #2
+echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_SERVERS_LIST"                #3
+echo -n "$github_cli_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GITHUB_CLI_PATH"              #4
+echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GPU_SERVERS_LIST"                  #5
+echo -n "$local_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/LOCAL_PATH"                        #6
+echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_DRIVERS_PATH"              #7
+echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_PROJECTS_PATH"            #8
+echo -n "$ONIC_DRIVER_COMMIT" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_DRIVER_COMMIT"        #9
+echo -n "$ONIC_DRIVER_NAME" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_DRIVER_NAME"            #10
+echo -n "$ONIC_DRIVER_REPO" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_DRIVER_REPO"            #11
+echo -n "$ONIC_SHELL_COMMIT" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_SHELL_COMMIT"          #12
+echo -n "$ONIC_SHELL_NAME" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_SHELL_NAME"              #13
+echo -n "$ONIC_SHELL_REPO" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ONIC_SHELL_REPO"              #14
+echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ROCM_PATH"                          #15
+echo -n "$updates_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/UPDATES_PATH"                    #16
+echo -n "$virtualized_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/VIRTUALIZED_SERVERS_LIST"  #17
+echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_PLATFORMS_PATH"  #18
+echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_TOOLS_PATH"          #19
+IFS=':' read -ra licenses <<< "$xilinxd_license_file"                                                       #20
 for license in "${licenses[@]}"; do
     echo "$license" >> "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINXD_LICENSE_FILE"
 done
+echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XRT_PATH"                            #21
 
 #copy to base_path
 sudo mv $SGRT_INSTALL_TMP_PATH/$REPO_NAME $base_path
