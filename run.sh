@@ -58,6 +58,9 @@ fi
 url="${HOSTNAME}"
 hostname="${url%%.*}"
 
+echo ""
+echo "${bold}${REPO_NAME}_install${normal}"
+
 #check on packages
 for package in "${PACKAGES[@]}"; do
     if ! which "$package" > /dev/null 2>&1; then
@@ -67,9 +70,6 @@ for package in "${PACKAGES[@]}"; do
         exit 1
     fi
 done
-
-echo ""
-echo "${bold}${REPO_NAME}_install${normal}"
 
 #get base_path
 echo ""
