@@ -12,15 +12,30 @@ chmod_x() {
     done
 }
 
-#constants
+#general constants
 BASE_PATH="/opt"
-MPICH_PATH="/opt/mpich"
-MY_DRIVERS_PATH="/local/home/\$USER"
 PACKAGES=("jq" "gh")
 REPO_NAME="sgrt"
-ROCM_PATH="/opt/rocm"
 TMP_PATH="/tmp"
-VIVADO_DEVICES_MAX="1"
+
+#constants (there are 21 at 17.09.2024)
+#ACAP_SERVERS_LIST
+#CPU_SERVERS_LIST
+#FPGA_SERVERS_LIST
+#GITHUB_CLI_PATH
+#GPU_SERVERS_LIST
+#LOCAL_PATH
+MY_DRIVERS_PATH="/local/home/\$USER"
+#MY_PROJECTS_PATH
+#ONIC_DRIVER_COMMIT
+#ONIC_DRIVER_NAME
+#ONIC_DRIVER_REPO
+#ONIC_SHELL_COMMIT
+#ONIC_SHELL_NAME
+#ONIC_SHELL_REPO
+ROCM_PATH="/opt/rocm"
+#UPDATES_PATH
+#VIRTUALIZED_SERVERS_LIST
 XILINX_PLATFORMS_PATH="/opt/xilinx/platforms"
 XILINX_TOOLS_PATH="/tools/Xilinx"
 XILINXD_LICENSE_FILE="2100@my-license-server.ethz.ch:2101@my-license-server.ethz.ch" # 2100@sgv-license-01.ethz.ch:2101@sgv-license-01.ethz.ch
@@ -154,14 +169,6 @@ done
 cpu_server=""
 if [ "$acap_server" = "" ] && [ "$fpga_server" = "" ] && [ "$gpu_server" = "" ]; then
     cpu_server=$hostname
-fi
-
-#get mpich_path
-echo ""
-read -p "${bold}Please, enter the value for MPICH_PATH (default: $MPICH_PATH):${normal} " mpich_path
-if [ -z "$mpich_path" ]; then
-    mpich_path=$MPICH_PATH
-    echo $mpich_path
 fi
 
 #get my_drivers_path
@@ -316,11 +323,9 @@ echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_S
 echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GPU_SERVERS_LIST"
 
 #fill up paths
-echo -n "$mpich_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MPICH_PATH"
 echo -n "$my_drivers_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_DRIVERS_PATH"
 echo -n "$my_projects_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/MY_PROJECTS_PATH"
 echo -n "$rocm_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ROCM_PATH"
-echo -n "$VIVADO_DEVICES_MAX" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/VIVADO_DEVICES_MAX" #it is fixed for now
 echo -n "$xilinx_platforms_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_PLATFORMS_PATH"
 echo -n "$xilinx_tools_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XILINX_TOOLS_PATH"
 echo -n "$xrt_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/XRT_PATH"
