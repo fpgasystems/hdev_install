@@ -52,7 +52,7 @@ After that, the installer will cotinue asking server-related and tool path quest
 * **MY_PROJECTS_PATH:** This parameter designates a directory where the user (```$USER```) must have the required privileges to conduct read, write, and application execution operations. The default setting is ```/home/$USER/my_projects```, where ```/home/$USER``` typically corresponds to an NFS hard drive accessible from all servers within a cluster.
 * **GITHUB_CLI_PATH:** This field specifies the path to a valid GitHub CLI installation, with the default location set at ```/usr/bin```.
 * **ROCM_PATH:** This field specifies the path to a valid ROCm installation, with the default location set at ```/opt/rocm```.
-* **UPDATES_PATH:** This parameter designates a directory where the sudo users have the required privileges to conduct read, write, and application execution operations. By default, this path is configured as ```/tmp```.
+* **UPDATES_PATH:** This parameter designates a directory where sudo users have the required privileges to conduct read, write, and application execution operations. By default, this path is configured as ```/tmp```.
 * **XILINX_PLATFORMS_PATH:** This parameter designates the path to the Xilinx platforms installed on the server. The default value is configured as ```/opt/xilinx/platforms```.
 * **XILINX_TOOLS_PATH:** This field specifies the path to the Xilinx tools (Vivado, Vitis, Vitis_HLS) installed on the server. The default value is established as ```/tools/Xilinx/```.
 * **XILINXD_LICENSE_FILE:** A list of verified license servers for Xilinx tools.
