@@ -79,6 +79,7 @@ For servers equipped with GPUs, a valid HIP/ROCm release must be present in the 
 ### Other tools
 Besides the tools listed above, the following are also required to make SGRT fully operative: <!-- This should match the PACKAGES vector in run.sh -->
 
+* curl
 * [GitHub CLI (gh)](https://cli.github.com) 
 * jq
 <!-- * iperf
