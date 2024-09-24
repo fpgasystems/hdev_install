@@ -20,7 +20,7 @@ TMP_PATH="/tmp"
 
 #constants (there are 21 as of 17.09.2024)
 #ACAP_SERVERS_LIST                                                                      #1  dialog 2
-#CPU_SERVERS_LIST                                                                       #2
+#BUILD_SERVERS_LIST                                                                     #2
 #FPGA_SERVERS_LIST                                                                      #3  dialog 3
 GITHUB_CLI_PATH="/usr/bin"                                                              #4  dialog 10
 #GPU_SERVERS_LIST                                                                       #5  dialog 4
@@ -165,10 +165,10 @@ while true; do
     esac
 done
 
-#set CPU_SERVERS_LIST (the server does not have any ACAP, FPGA, or GPU)
-cpu_server=""
+#set BUILD_SERVERS_LIST (the server does not have any ACAP, FPGA, or GPU)
+build_server=""
 if [ "$acap_server" = "" ] && [ "$fpga_server" = "" ] && [ "$gpu_server" = "" ]; then
-    cpu_server=$hostname
+    build_server=$hostname
 fi
 
 #get local_path - dialog 5
@@ -341,7 +341,7 @@ chmod_x $SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/validate
 
 #constants
 echo -n "$acap_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/ACAP_SERVERS_LIST"                #1
-echo -n "$cpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/CPU_SERVERS_LIST"                  #2
+echo -n "$build_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/BUILD_SERVERS_LIST"              #2
 echo -n "$fpga_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_SERVERS_LIST"                #3
 echo -n "$github_cli_path" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GITHUB_CLI_PATH"              #4
 echo -n "$gpu_server" > "$SGRT_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GPU_SERVERS_LIST"                  #5
