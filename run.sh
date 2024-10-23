@@ -14,7 +14,7 @@ chmod_x() {
 
 #installation constants
 BASE_PATH="/opt"                                                                        #   dialog
-PACKAGES=("curl" "jq" "gh")
+PACKAGES=("curl" "gh" "jq" "python3" "uncrustify")
 REPO_NAME="sgrt"
 TMP_PATH="/tmp"
 

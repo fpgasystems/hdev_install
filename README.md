@@ -82,6 +82,8 @@ Besides the tools listed above, the following are also required to make SGRT ful
 * curl
 * [GitHub CLI (gh)](https://cli.github.com) 
 * jq
+* python3
+* uncrustify
 <!-- * iperf
 * [MPICH](https://www.mpich.org) -->
 
