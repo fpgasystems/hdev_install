@@ -1,21 +1,13 @@
 <div id="readme" class="Box-body readme blob js-code-block-container">
 <article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
 <p align="right">
-<!-- <a href="https://github.com/fpgasystems">fpgasystems</a> <a href="https://github.com/fpgasystems/hacc">HACC</a> <a href="https://github.com/fpgasystems/sgrt">SGRT</a> -->
-<a href="https://github.com/fpgasystems/sgrt/tree/main#--systems-group-runtime">Back to top</a>
-</p>
 
-<!-- <p align="center">
-<img src="https://github.com/fpgasystems/sgrt_install/blob/main/sgrt-install-removebg.png" align="center" width="350">
+<a href="https://github.com/fpgasystems/hdev/tree/main?tab=readme-ov-file#--hacc-development">Back to top</a>
 </p>
-
-<h1 align="center">
-  Systems Group RunTime Installation
-</h1> --> 
 
 # Installation
 
-To install [SGRT,](https://github.com/fpgasystems/sgrt) please proceed by following these steps:
+To install **[hdev,](https://github.com/fpgasystems/hdev)** please proceed by following these steps:
 
 * [Downloading the installer](#downloading-the-installer)
 * [Running the installer](#running-the-installer)
@@ -42,7 +34,7 @@ Once these prerequisites are confirmed, proceed with the installation:
 sudo ./sgrt_install/run.sh
 ```
 
-The first thing you need to do after running the installer is to provide a **non-existing path where you want to install SGRT.** For example, designating ```/opt``` will install SGRT in ```/opt/sgrt```. 
+The first thing you need to do after running the installer is to provide a **non-existing path where you want to install hdev.** For example, designating ```/opt``` will install **hdev** in ```/opt/hdev```. 
 
 After that, the installer will cotinue asking server-related and tool path questions. The following information is intended to assist you in making the correct **path selections:**
 
@@ -62,13 +54,13 @@ Please note that you have the flexibility to utilize any other environment varia
 
 ## Installing prerequisite software
 
-To ensure proper functionality, the following tools must be present on the server for SGRT to run:
+To ensure proper functionality, the following tools must be present on the server for **hdev** to run:
 
 ### Xilinx tools and deployment target platforms
 For those servers with reconfigurable devices, the following criteria apply:
 
 * **XRT (Xilinx RunTime):** To ensure proper operation, a valid XRT version must be present in the designated ```XRT_PATH```. 
-* **Vivado and Vitis_HLS:**  In order to run SGRT effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
+* **Vivado and Vitis_HLS:**  In order to run **hdev** effectively, it is mandatory to have valid versions of Vivado and Vitis_HLS installed within the specified ```XILINX_TOOLS_PATH```.
 * **Vitis:** The inclusion of the Vitis Development Core is optional but can be beneficial. If you choose to install it, please ensure that it is also placed within the ```XILINX_TOOLS_PATH``` directory for seamless integration.
 
 Finally, as a vital requirement, all the Xilinx accelerator cards mounted on the deployment server must have their **deployment target platform toolkit** available within the designated ```XILINX_PLATFORMS_PATH``` directory.
@@ -77,10 +69,10 @@ Finally, as a vital requirement, all the Xilinx accelerator cards mounted on the
 For servers equipped with GPUs, a valid HIP/ROCm release must be present in the designated ```ROCM_PATH``` directory.
 
 ### Other tools
-Besides the tools listed above, the following are also required to make SGRT fully operative: <!-- This should match the PACKAGES vector in run.sh -->
+Besides the tools listed above, the following are also required to make **hdev** fully operative: <!-- This should match the PACKAGES vector in run.sh -->
 
 * curl
-* [GitHub CLI (gh)](https://cli.github.com) 
+* [GitHub CLI](https://cli.github.com) 
 * jq
 * python3
 * uncrustify
@@ -101,10 +93,10 @@ vivado_developers ALL=(ALL) NOPASSWD:/sbin/reboot,/sbin/insmod,/sbin/rmmod,/sbin
 ```
 *vivado_developer group contents.*
 
-where ```$CLI_PATH``` represents SGRT CLI path, for example ```/opt/sgrt/cli``` and **must be declared as environmental varible.**
+where ```$CLI_PATH``` represents **hdev** CLI path, for example ```/opt/hdev/cli``` and **must be declared as environmental varible.**
 
 ### Vivado configuration
-In order to use the **Vivado workflow,** SGRT requires to **install cable drivers** for Xilinx boards and **configure udev rules.**
+In order to use the **Vivado workflow, hedv** requires to **install cable drivers** for Xilinx boards and **configure udev rules.**
 
 1. **Install cable drivers:** 
 ```
@@ -124,7 +116,7 @@ where the **vivado_developers** group relates to the section above.
 
 ## Generating device configuration files
 
-An essential SGRT component are the device configuration files. Each server running SGRT requires three files: one for networking devices, one for adaptable devices (ACAPs, ASoCs and FPGAs) and another for GPUs. These files are assumed to be correct, and what follows helps you generate them accurately.
+An essential **hdev** component are the device configuration files. Each server running **hdev** requires three files: one for networking devices, one for adaptable devices (ACAPs, ASoCs and FPGAs) and another for GPUs. These files are assumed to be correct, and what follows helps you generate them accurately.
 
 ### devices_network
 A **devices_network** configuration file is located in ```$CLI_PATH/devices_network``` and looks like this:
@@ -180,18 +172,18 @@ As before, there is one row per GPU, and the columns represent the following inf
 
 ## Generating device information files
 
-Alongside the device configuration files, each server running SGRT requires the ```$CLI_PATH/platforminfo``` file, which contains pertinent details about clock speed, available resources, and memory. The Xilinx tool ```platforminfo``` can assist in obtaining the appropriate values for these files.
+Alongside the device configuration files, each server running **hdev** requires the ```$CLI_PATH/platforminfo``` file, which contains pertinent details about clock speed, available resources, and memory. The Xilinx tool ```platforminfo``` can assist in obtaining the appropriate values for these files.
 
 ![platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.](./platforminfo.png "platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.")
 *platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.*
 
 ## Enabling Systems Group RunTime on a cluster
-Under the following assumptions, SGRT can program bitstreams on remote servers’ ACAPs and FPGAs:
+Under the following assumptions, **hdev** can program bitstreams on remote servers’ ACAPs and FPGAs:
 
-1. SGRT is successfully installed on all the servers you wish to include in your managed cluster.
+1. **hdev** is successfully installed on all the servers you wish to include in your managed cluster.
 2. The remote servers are on the same IP network.
 3. You have the necessary SSH access permissions to interact with the remote servers.
-4. All target servers have replicated copies of the five SERVERS_LIST files, which are located in the ```$CLI_PATH/constants``` directory. **To illustrate, here's an example of such files in a real SGRT cluster:**
+4. All target servers have replicated copies of the five SERVERS_LIST files, which are located in the ```$CLI_PATH/constants``` directory. **To illustrate, here's an example of such files in a real hdev cluster:**
 
 ![The files ACAP_SERVERS_LIST, BUILD_SERVERS_LIST, FPGA_SERVERS_LIST, GPU_SERVERS_LIST, and VIRTUALIZED_SERVERS_LIST are replicated on all servers in the cluster..](./SERVER_LISTS.png "The files ACAP_SERVERS_LIST, BUILD_SERVERS_LIST, FPGA_SERVERS_LIST, GPU_SERVERS_LIST, and VIRTUALIZED_SERVERS_LIST are replicated on all servers in the cluster..")
 *The files ACAP_SERVERS_LIST, BUILD_SERVERS_LIST, FPGA_SERVERS_LIST, GPU_SERVERS_LIST, and VIRTUALIZED_SERVERS_LIST are replicated on all servers in the cluster.*
