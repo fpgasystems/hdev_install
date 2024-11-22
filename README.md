@@ -1,7 +1,6 @@
 <div id="readme" class="Box-body readme blob js-code-block-container">
 <article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
 <p align="right">
-
 <a href="https://github.com/fpgasystems/hdev/tree/main?tab=readme-ov-file#--hacc-development">Back to top</a>
 </p>
 
@@ -15,7 +14,7 @@ To install **[hdev,](https://github.com/fpgasystems/hdev)** please proceed by fo
 * [System and Vivado configuration](#system-and-vivado-configuration)
 * [Generating device configuration files](#generating-device-configuration-files)
 * [Generating device information files](#generating-device-information-files)
-* [Enabling hdev on a cluster](#enabling-systems-group-runtime-on-a-cluster)
+* [Enabling hdev on a cluster](#enabling-hdev-on-a-cluster)
 
 ## Downloading the installer
 ```
