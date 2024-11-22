@@ -15,7 +15,7 @@ To install **[hdev,](https://github.com/fpgasystems/hdev)** please proceed by fo
 * [System and Vivado configuration](#system-and-vivado-configuration)
 * [Generating device configuration files](#generating-device-configuration-files)
 * [Generating device information files](#generating-device-information-files)
-* [Enabling Systems Group RunTime on a cluster](#enabling-systems-group-runtime-on-a-cluster)
+* [Enabling hdev on a cluster](#enabling-systems-group-runtime-on-a-cluster)
 
 ## Downloading the installer
 ```
@@ -177,7 +177,7 @@ Alongside the device configuration files, each server running **hdev** requires 
 ![platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.](./platforminfo.png "platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.")
 *platforminfo for three different servers: one mounting an Alveo U250 board, one mounting a U280 board, and one mounting one U55C and one Versal VCK5000.*
 
-## Enabling Systems Group RunTime on a cluster
+## Enabling hdev on a cluster
 Under the following assumptions, **hdev** can program bitstreams on remote servers’ ACAPs and FPGAs:
 
 1. **hdev** is successfully installed on all the servers you wish to include in your managed cluster.
