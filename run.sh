@@ -121,9 +121,9 @@ done
 
 #get email
 echo ""
-echo -n "${bold}Please, enter a valid email for the person in charge of $REPO_NAME (example: jmoyapaya@ethz.ch):${normal} "
+echo "${bold}Please, enter a valid email for the person in charge of $REPO_NAME (example: jmoyapaya@ethz.ch):${normal} "
 while true; do
-    read -p "" email
+    read email
     # Check if the email is not empty and matches a valid email format
     if [[ -n "$email" && "$email" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
         break
