@@ -121,7 +121,7 @@ done
 
 #get email
 echo ""
-echo -n "${bold}Please, enter a valid email for the person in charge of $REPO_NAME:${normal} "
+echo -n "${bold}Please, enter a valid email for the person in charge of $REPO_NAME (example: jmoyapaya@ethz.ch):${normal} "
 while true; do
     read -p "" email
     # Check if the email is not empty and matches a valid email format
