@@ -131,7 +131,7 @@ while true; do
 done
 
 #derive paths
-api_path=$base_path/$REPO_NAME/api
+#api_path=$base_path/$REPO_NAME/api
 cli_path=$base_path/$REPO_NAME/cli
 templates_path=$base_path/$REPO_NAME/templates
 
@@ -403,10 +403,10 @@ if [ -d "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/trash" ]; then
     rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/trash
 fi
 #hdev/api docs
-rm $HDEV_INSTALL_TMP_PATH/$REPO_NAME/api/*.md
-rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/api/manual
+#rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/api/*.md
+#rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/api/manual
 #hdev/cli docs
-rm $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/*.md
+rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/*.md
 rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/manual
 #overleaf
 rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/overleaf*
