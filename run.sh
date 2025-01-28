@@ -171,7 +171,7 @@ done
 
 #set ACAP_SERVERS_LIST - dialog 2 
 echo ""
-echo "${bold}Does $hostname have any ACAP mounted on it (y/n)?:${normal}" 
+echo "${bold}Does $hostname have any ACAP (i.e., Alveo VCK5000) mounted on it (y/n)?:${normal}" 
 acap_server=""
 while true; do
     read -p "" yn
@@ -188,7 +188,7 @@ done
 
 #set ASOC_SERVERS_LIST - dialog 2.1 
 echo ""
-echo "${bold}Does $hostname have any ASOC mounted on it (y/n)?:${normal}" 
+echo "${bold}Does $hostname have any ASOC (i.e., Alveo V80) mounted on it (y/n)?:${normal}" 
 asoc_server=""
 while true; do
     read -p "" yn
@@ -205,7 +205,7 @@ done
 
 #set FPGA_SERVERS_LIST - dialog 3
 echo ""
-echo "${bold}Does $hostname have any FPGA mounted on it (y/n)?:${normal}" 
+echo "${bold}Does $hostname have any FPGA (i.e., Alveo U55C) mounted on it (y/n)?:${normal}" 
 fpga_server=""
 while true; do
     read -p "" yn
@@ -321,6 +321,37 @@ fi
 aved_tools_path=""
 aved_path=""
 if [ "$asoc_server" = "$hostname" ]; then
+    if ["$xilinx_tools_path" = "" ]; then
+        #get xilinx_tools_path
+        echo ""
+        read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
+        if [ -z "$xilinx_tools_path" ]; then
+            xilinx_tools_path=$XILINX_TOOLS_PATH
+            echo $xilinx_tools_path
+        fi
+
+        #get xilinxd_license_file
+        echo ""
+        echo -n "${bold}Please, enter the value for XILINXD_LICENSE_FILE (example: $XILINXD_LICENSE_FILE):${normal} "
+        while true; do
+            read -p "" xilinxd_license_file
+            #check if not empty
+            if [ -z "$xilinxd_license_file" ]; then
+                echo ""
+                echo "Please, enter a valid value for XILINXD_LICENSE_FILE"
+            else
+                # Validate format
+                if [[ "$xilinxd_license_file" =~ ^[[:digit:]]+@[[:alnum:].-]+(:[[:digit:]]+@[[:alnum:].-]+)?$ ]]; then
+                    # Valid format
+                    break
+                else
+                    echo ""
+                    echo "Please, enter a valid value for XILINXD_LICENSE_FILE" 
+                fi
+            fi
+        done
+    fi
+
     #get aved_tools_path
     echo ""
     read -p "${bold}Please, enter the value for AVED_TOOLS_PATH (default: $AVED_TOOLS_PATH):${normal} " aved_tools_path
