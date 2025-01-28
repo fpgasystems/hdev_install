@@ -38,7 +38,7 @@ The first thing you need to do after running the installer is to provide a **non
 After that, the installer will cotinue asking server-related and tool path questions. The following information is intended to assist you in making the correct **path selections:**
 
 <!-- There are 14 - SERVER_LIST = 14 - 4 = 10 variables with dialogs as in run.sh -->
-* **AVED_PATH:** This parameter designates the path to the valid AVED (Alveo Versal Example Design) xbtest installation, installed by default at ```/opt/amd/aved```.
+* **AVED_PATH:** This parameter designates the path to a valid AVED (Alveo Versal Example Design) xbtest installation, installed by default at ```/opt/amd/aved```.
 * **AVED_TOOLS_PATH:** This field specifies the path to the command line tool for the AMI driver API (ami_tool) installed on the server. The default value is established as ```/usr/local/bin```.
 * **LOCAL_PATH:** This parameter designates a directory where the user (```$USER```) must have the required privileges to conduct read, write, and application execution operations. By default, this path is configured as ```/local/home/$USER```.
 * **MY_DRIVERS_PATH:** This parameter specifies a directory where the user (```$USER```) should possess the necessary permissions to employ the ```rmmod``` and ```insmod``` system calls. By default, this path is configured as ```/tmp/devices_acap_fpga_drivers``` (where inserted driver files would be removed after a server reboot).
