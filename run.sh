@@ -323,7 +323,7 @@ fi
 aved_tools_path=""
 aved_path=""
 if [ "$asoc_server" = "$hostname" ]; then
-    if ["$xilinx_tools_path_exists" = "0" ]; then
+    if [ "$xilinx_tools_path_exists" = "0" ]; then
         #get xilinx_tools_path
         echo ""
         read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
