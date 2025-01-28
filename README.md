@@ -18,7 +18,7 @@ To install **[hdev,](https://github.com/fpgasystems/hdev)** please proceed by fo
 
 ## Downloading the installer
 ```
-git clone https://github.com/fpgasystems/sgrt_install.git
+git clone https://github.com/fpgasystems/hdev_install.git
 ```
 
 ## Running the installer
