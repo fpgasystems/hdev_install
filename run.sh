@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLI_NAME="sgutil"
+CLI_NAME="hdev"
 bold=$(tput bold)
 normal=$(tput sgr0)
 
@@ -389,9 +389,9 @@ cd $HDEV_INSTALL_TMP_PATH/$REPO_NAME
 remote_commit_id=$(git rev-parse --short HEAD)
 
 #hdev cleanup
-rm $HDEV_INSTALL_TMP_PATH/$REPO_NAME/*.md
-rm $HDEV_INSTALL_TMP_PATH/$REPO_NAME/*.png
-rm $HDEV_INSTALL_TMP_PATH/$REPO_NAME/LICENSE
+rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/*.md
+rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/*.png
+rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/LICENSE
 #docs
 rm -rf $HDEV_INSTALL_TMP_PATH/$REPO_NAME/docs
 #examples
@@ -492,13 +492,13 @@ sudo chown -R root:root $base_path/$REPO_NAME
 #adding to profile.d (system-wide $PATH)
 echo "PATH=\$PATH:$cli_path" | sudo tee /etc/profile.d/$CLI_NAME.sh > /dev/null
 
-#copying sgutil_completion
+#copying hdev_completion
 sudo mv $base_path/$REPO_NAME/cli/$CLI_NAME"_completion" /usr/share/bash-completion/completions/$CLI_NAME
 sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 
 #export API, CLI, and TEMPLATES_PATH
 if ! grep -qF "export CLI_PATH=${cli_path}" /etc/bash.bashrc; then
-    echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
+    #echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
     echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
     echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
 fi
