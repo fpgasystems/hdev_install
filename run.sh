@@ -271,6 +271,7 @@ fi
 xilinx_platforms_path=""
 xilinx_tools_path=""
 xrt_path=""
+xilinx_tools_path_exists="0"
 if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     echo ""
     read -p "${bold}Please, enter the value for XILINX_PLATFORMS_PATH (default: $XILINX_PLATFORMS_PATH):${normal} " xilinx_platforms_path
@@ -284,6 +285,7 @@ if [ "$acap_server" = "$hostname" ] || [ "$fpga_server" = "$hostname" ]; then
     read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
     if [ -z "$xilinx_tools_path" ]; then
         xilinx_tools_path=$XILINX_TOOLS_PATH
+        xilinx_tools_path_exists="1"
         echo $xilinx_tools_path
     fi
 
@@ -321,7 +323,7 @@ fi
 aved_tools_path=""
 aved_path=""
 if [ "$asoc_server" = "$hostname" ]; then
-    if ["$xilinx_tools_path" = "" ]; then
+    if ["$xilinx_tools_path_exists" = "0" ]; then
         #get xilinx_tools_path
         echo ""
         read -p "${bold}Please, enter the value for XILINX_TOOLS_PATH (default: $XILINX_TOOLS_PATH):${normal} " xilinx_tools_path
