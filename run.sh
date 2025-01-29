@@ -46,7 +46,7 @@ MTU_DEFAULT="1576"                                                              
 MTU_MAX="9000"                                                                          #40
 MTU_MIN="1500"                                                                          #41
 MY_DRIVERS_PATH="/tmp/devices_acap_fpga_drivers"                                        #7  dialog 6
-MY_PROJECTS_PATH="/home/\$USER/my_projects"                                             #8  dialog 7
+MY_PROJECTS_PATH="/home/\$USER"                                                         #8  dialog 7
 #NIC_SERVERS_LIST                                                                       #42
 ONIC_DRIVER_COMMIT="1cf2578"                                                            #9
 ONIC_DRIVER_NAME="onic.ko"                                                              #10
@@ -70,7 +70,7 @@ XRT_PATH="/opt/xilinx/xrt"                                                      
 
 #derived
 MAIN_BRANCH_URL="https://api.github.com/repos/fpgasystems/$REPO_NAME/commits/main"
-MY_PROJECTS_PATH="/home/\$USER/${REPO_NAME}_projects"
+#MY_PROJECTS_PATH="/home/\$USER/my_projects"
 REPO_URL="https://github.com/fpgasystems/$REPO_NAME.git"
 
 #check if the user has sudo capabilities
@@ -263,7 +263,7 @@ fi
 echo ""
 read -p "${bold}Please, enter the value for MY_PROJECTS_PATH (default: $MY_PROJECTS_PATH):${normal} " my_projects_path
 if [ -z "$my_projects_path" ]; then
-    my_projects_path=$MY_PROJECTS_PATH
+    my_projects_path=$MY_PROJECTS_PATH/my_projects
     echo $my_projects_path
 fi
 
