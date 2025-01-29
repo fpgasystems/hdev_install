@@ -459,6 +459,7 @@ chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/build
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/common
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/enable
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/get
+chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/help
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/new
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/program
 chmod_x $HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/run
