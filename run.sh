@@ -534,7 +534,7 @@ sudo chown root:root /usr/share/bash-completion/completions/$CLI_NAME
 if ! grep -qF "export CLI_PATH=${cli_path}" /etc/bash.bashrc; then
     #echo "export CLI_PATH=${api_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
     echo "export CLI_PATH=${cli_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
-    echo "export CLI_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
+    echo "export TEMPLATES_PATH=${templates_path}" | sudo tee -a /etc/bash.bashrc > /dev/null
 fi
 
 #remove folder
