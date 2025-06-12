@@ -20,7 +20,7 @@ TMP_PATH="/tmp"
 
 #constants (there are 21 as of 17.09.2024)
 #ACAP_SERVERS_LIST                                                                      #1  dialog 2
-#ASOC_SERVERS_LIST                                                                      #22 dialog 2.1
+#ASOC_SERVERS_LIST                                                                      #22 dialog 2.1 
 AVED_DRIVER_NAME="ami.ko"                                                               #23
 AVED_PATH="/opt/amd/aved"                                                               #24 dialog 8.1.2
 AVED_REPO="Xilinx/AVED"                                                                 #25
@@ -37,6 +37,8 @@ AVED_UUID="3907c6f088e5c23471ab99aae09a9928"                                    
 #COLOR_OFF                                                                              #35
 #COLOR_PASSED                                                                           #36
 #COLOR_XILINX                                                                           #37
+COMPOSER_REPO="oreolag/hcmp"
+COMPOSER_TAG="2025.1"
 EMAIL=""                                                                                #38 dialog
 #FPGA_SERVERS_LIST                                                                      #3  dialog 3
 GITHUB_CLI_PATH="/usr/bin"                                                              #4  dialog 10
@@ -56,7 +58,6 @@ ONIC_SHELL_NAME="open_nic_shell.bit"                                            
 ONIC_SHELL_REPO="Xilinx/open-nic-shell"                                                 #14
 ROCM_PATH="/opt/rocm"                                                                   #15 dialog 9
 UPDATES_PATH="/tmp"                                                                     #16 dialog 11
-#VIRTUALIZED_SERVERS_LIST                                                               #17 dialog 1 [UNUSED]
 VRT_REPO="fpgasystems/vrt"                                                              #43
 VRT_TAG="amd_v80_gen5x8_24.1_20241002"                                                  #44
 XDP_BPFTOOL_COMMIT="687e7f0"                                                            #45
@@ -485,6 +486,8 @@ echo "'\033[38;5;38m'" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COLOR_
 echo "'\033[0m'" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COLOR_OFF"                              #35
 echo "'\033[0;32m'" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COLOR_PASSED"                        #36
 echo "'\033[38;5;197m'" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COLOR_XILINX"                    #37
+echo -n "$COMPOSER_REPO" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COMPOSER_REPO"
+echo -n "$COMPOSER_TAG" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/COMPOSER_TAG"                    
 echo -n "$email" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/EMAIL"                                  #38
 echo -n "$fpga_server" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/FPGA_SERVERS_LIST"                #3
 echo -n "$github_cli_path" > "$HDEV_INSTALL_TMP_PATH/$REPO_NAME/cli/constants/GITHUB_CLI_PATH"              #4
